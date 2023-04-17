@@ -5,6 +5,8 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const createError = require("http-errors");
 
+require('./config/db.config');
+
 const app = express();
 
 app.use(logger('dev'));
