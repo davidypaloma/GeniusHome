@@ -7,6 +7,8 @@ const createError = require("http-errors");
 
 const app = express();
 
+app.use(logger('dev'));
+
 app.use((req, res, next) => next(createError(404, "Route not found")));
 
 app.use((error, req, res, next) => {
