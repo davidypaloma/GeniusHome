@@ -30,7 +30,7 @@ const userSchema = new Schema(
     image: {
       type: String,
       required: 'Your image is required',
-      match: [/^https?:\/\/.+\.(jpg|jpeg|png)$/, "Image URL must be valid"]
+      // match: [/^https?:\/\/.+\.(jpg|jpeg|png)$/, "Image URL must be valid"]
     },
     home: {
       type: mongoose.Schema.Types.ObjectId,
