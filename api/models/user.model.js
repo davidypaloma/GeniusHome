@@ -31,6 +31,7 @@ const userSchema = new Schema(
       type: String,
       required: 'Your image is required',
       // match: [/^https?:\/\/.+\.(jpg|jpeg|png)$/, "Image URL must be valid"]
+      default: "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
     },
     home: {
       type: mongoose.Schema.Types.ObjectId,
