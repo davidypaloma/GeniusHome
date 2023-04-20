@@ -6,11 +6,9 @@ const mongoose = require("mongoose");
 const createError = require("http-errors");
 
 require('./config/db.config');
-
 const app = express();
 
 app.use(express.json())
-
 app.use(logger('dev'));
 
 const api = require('./config/routes.config');
@@ -20,10 +18,11 @@ app.use((req, res, next) => next(createError(404, "Route not found")));
 
 app.use((error, req, res, next) => {
   console.error(error);
-
   if (error instanceof mongoose.Error.ValidationError) {
     error = createError(400, error);
-
+  } else if (error instanceof mongoose.Error.CastError && error.path === '_id') {
+    const resourceName = error.model().constructor.modelName;
+    error = createError(404, `${resourceName} not found`);
   } else if (error.message.includes("E11000")) {
     // Duplicated keys
     Object.keys(error.keyValue).forEach((key) => error.keyValue[key] = 'Already exists');
@@ -42,7 +41,7 @@ app.use((error, req, res, next) => {
     const errors = Object.keys(error.errors)
       .reduce((errors, errorKey) => {
         errors[errorKey] = error.errors[errorKey]?.message || error.errors[errorKey];
-        return errors
+        return errors;
       }, {});
     data.errors = errors;
   }
