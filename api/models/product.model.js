@@ -15,10 +15,10 @@ const productSchema = new Schema(
     },
     image: {
       type: String,
-      required: 'Product image is required'
     },
     home: {
       type: mongoose.Schema.Types.ObjectId,
+      required: true,
       ref: "Home"
     }
   },

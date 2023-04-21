@@ -1,26 +1,38 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const cleaningTaskSchema = new Schema(
+const messageSchema = new Schema(
   {
-    name: {
+    text: {
       type: String,
-      required: 'Cleaning Task name is required',
-      minLength: [3, 'Cleaning Task name need at least 3 characters']
+      required: 'Message text is required',
+      minLength: [3, 'Message text need at least 3 characters']
+    },
+    urgent: {
+      type: Boolean
     },
     image: {
       type: String,
     },
     home: {
       type: mongoose.Schema.Types.ObjectId,
+      required: true,
       ref: "Home"
     },
-    assignedUser: {
+    owner: {
       type: mongoose.Schema.Types.ObjectId,
+      required: true,
       ref: "User"
     },
+    replies: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message"
+      }
+    ]
   },
   {
+    timestamps: true,
     toJson: {
       transform: function (doc, ret) {
         delete ret.__v;
@@ -32,5 +44,5 @@ const cleaningTaskSchema = new Schema(
   }
 );
 
-const CleaningTask = mongoose.model('CleaningTask', cleaningTaskSchema);
-module.exports = CleaningTask;
+const Message = mongoose.model('Message', messageSchema);
+module.exports = Message;

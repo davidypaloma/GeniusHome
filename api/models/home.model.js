@@ -29,5 +29,5 @@ homeSchema.virtual("users", {
   justOne: false,
 });
 
-const Home = mongoose.model("Home", homeSchema);
+const Home = mongoose.model('Home', homeSchema);
 module.exports = Home;

@@ -8,6 +8,8 @@ const products = require('../controllers/products.controller');
 const productsMid = require('../middlewares/products.mid');
 const cleaningTasks = require('../controllers/cleaning-tasks.controller');
 const cleaningTasksMid = require('../middlewares/cleaning-tasks.mid');
+const messages = require('../controllers/messages.controller');
+const messagesMid = require('../middlewares/messages.mid');
 
 
 const todo = (req, res, next) => { res.send("TODO") }
@@ -33,6 +35,11 @@ router.post('/assigned-tasks', cleaningTasks.create);
 router.get('/assigned-tasks', cleaningTasks.list);
 router.delete('/assigned-tasks/:id', cleaningTasksMid.exists, cleaningTasks.delete);
 router.patch('/assigned-tasks/:id', cleaningTasksMid.exists, cleaningTasks.update);
+
+router.post('/messages', messages.create);
+router.get('/messages', messages.list);
+router.delete('/messages/:id', messagesMid.exists, messages.delete);
+router.patch('/messages/:id', messagesMid.exists, messages.update);
 
 module.exports = router
 
