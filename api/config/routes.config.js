@@ -6,6 +6,9 @@ const users = require('../controllers/users.controller');
 const usersMid = require('../middlewares/users.mid');
 const products = require('../controllers/products.controller');
 const productsMid = require('../middlewares/products.mid');
+const cleaningTasks = require('../controllers/cleaning-tasks.controller');
+const cleaningTasksMid = require('../middlewares/cleaning-tasks.mid');
+
 
 const todo = (req, res, next) => { res.send("TODO") }
 
@@ -25,6 +28,11 @@ router.post('/shopping-list-items', products.create);
 router.get('/shopping-list-items', products.list);
 router.delete('/shopping-list-items/:id', productsMid.exists, products.delete);
 router.patch('/shopping-list-items/:id', productsMid.exists, products.update);
+
+router.post('/assigned-tasks', cleaningTasks.create);
+router.get('/assigned-tasks', cleaningTasks.list);
+router.delete('/assigned-tasks/:id', cleaningTasksMid.exists, cleaningTasks.delete);
+router.patch('/assigned-tasks/:id', cleaningTasksMid.exists, cleaningTasks.update);
 
 module.exports = router
 
