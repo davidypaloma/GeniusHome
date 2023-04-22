@@ -11,9 +11,6 @@ const messageSchema = new Schema(
     urgent: {
       type: Boolean
     },
-    image: {
-      type: String,
-    },
     home: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -24,12 +21,6 @@ const messageSchema = new Schema(
       required: true,
       ref: "User"
     },
-    replies: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Message"
-      }
-    ]
   },
   {
     timestamps: true,

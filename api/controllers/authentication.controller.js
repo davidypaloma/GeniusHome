@@ -10,6 +10,7 @@ module.exports.login = (req, res, next) => {
           if (passwordOk) {
             req.session.userId = user.id //código incompleto
             res.set('Set-Cookie', `sessionid=${req.session.userId}`);
+            res.status(200).send()
           }
         })
         .catch(next);
