@@ -1,5 +1,5 @@
 const User = require('../models/user.model');
-// const createError = require('http-errors');
+const createError = require('http-errors');
 
 module.exports.create = (req, res, next) => {
   User.create(req.body)
@@ -7,23 +7,19 @@ module.exports.create = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.detail = (req, res, next) => res.json(req.user);
+module.exports.detail = (req, res, next) => {
+    res.json(req.user)
+}
 
 module.exports.delete = (req, res, next) => {
-  // if (req.user.id !== req.params.id) {
-  //   return next (createError(403, "Forbidden"));
-  // }
-
+  
   User.deleteOne({ _id: req.user.id })
     .then(() => res.status(204).send())
     .catch(next)
 };
 
 module.exports.update = (req, res, next) => {
-  // if (req.user.id !== req.params.id) {
-  //   return next (createError(403, "Forbidden"));
-  // }
-
+  
   Object.assign(req.user, req.body);
 
   req.user

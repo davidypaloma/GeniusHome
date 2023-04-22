@@ -4,7 +4,7 @@ const createError = require('http-errors');
 
 module.exports.exists = (req, res, next) => {
   const cleaningTaskId = req.params.id
-  CleaningTask.findById(cleaningTaskId)
+  CleaningTask.findOne({ _id: cleaningTaskId, home: req.user.home })
     .then((cleaningTask) => {
       console.log(cleaningTaskId, cleaningTask)
       if (cleaningTask) {

@@ -14,7 +14,7 @@ module.exports.detail = (req, res, next) => {
 }
 
 // module.exports.delete = (req, res, next) => {
-//   const { id } = req.home;
+//   const { id } = req.user.home;
 //   Home.deleteOne({ _id: id })
 //     .then(() => {
 //       return User
@@ -25,19 +25,19 @@ module.exports.detail = (req, res, next) => {
 // }
 
 module.exports.deleteAsync = async (req, res, next) => {
-  const { id } = req.home;
+  const { id } = req.user.home;
   try {
     await Home.deleteOne({ _id: id })
     await User.deleteMany({ home: id })
     res.status(204).send()
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 }
 
 module.exports.update = (req, res, next) => {
-  Object.assign(req.home, { name: req.body.name })
-  req.home
+  Object.assign(req.user.home, { name: req.body.name })
+  req.user.home
     .save()
     .then((home) => res.json(home))
     .catch(next)

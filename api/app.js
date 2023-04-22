@@ -6,10 +6,18 @@ const mongoose = require("mongoose");
 const createError = require("http-errors");
 
 require('./config/db.config');
+
 const app = express();
 
-app.use(express.json())
+const { session, loadSessionUser } = require('./config/session.config');
+
+app.use(express.json());
 app.use(logger('dev'));
+
+app.use(session);
+app.use(loadSessionUser);
+
+
 
 const api = require('./config/routes.config');
 app.use('/api/v1', api);

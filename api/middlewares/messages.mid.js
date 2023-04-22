@@ -3,7 +3,7 @@ const createError = require('http-errors');
 
 module.exports.exists = (req, res, next) => {
   const messageId = req.params.id
-  Message.findById(messageId)
+  Message.findOne({ _id: messageId, home: req.user.home })
     .then((message) => {
       console.log(messageId, message)
       if (message) {
@@ -15,3 +15,5 @@ module.exports.exists = (req, res, next) => {
     })
     .catch(next)
 }
+
+//todo crear author mid

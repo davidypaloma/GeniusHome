@@ -3,19 +3,20 @@ const Message = require('../models/message.model');
 module.exports.create = (req, res, next) => {
   //TODO meter por defecto el id de la Home y el del owner cuando hayamos hecho autenticación
   //TODO replies
+  req.body.home = req.user.home
   Message.create(req.body)
     .then((message) => res.status(201).json(message))
     .catch(next);
 };
 
 module.exports.list = (req, res, next) => {
-  Message.find()
+  Message.find( {home: req.user.home })
     .then((messages) => res.json(messages))
     .catch(next);
 };
 
 module.exports.delete = (req, res, next) => {
-  Message.deleteOne({ _id: req.message.id })
+  Message.deleteOne({ _id: req.message.id, home: req.user.home })
     .then(() => res.status(204).send())
     .catch(next)
 };
