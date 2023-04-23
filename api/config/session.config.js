@@ -33,18 +33,4 @@ module.exports.loadSessionUser = (req, res, next) => {
   }
 }
 
-module.exports.loadSession= (req, res, next) => {
-  const { userId } = req.session;
-  if (userId) {
-    User.findById(userId)
-      .then(user => {
-        req.user = user;
-        next();
-      })
-      .catch(error => next(error))
-  } else {
-    next()
-  }
-}
-
 //qué hay que poner en SESSION_SECRET y en SESSION_SECURE?

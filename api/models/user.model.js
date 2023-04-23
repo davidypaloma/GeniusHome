@@ -59,11 +59,11 @@ userSchema.pre("save", function (next) {
       .genSalt(10)
       .then((salt) => {
         return bcrypt
-        .hash(user.password, salt)
-        .then((hash) => {
-          user.password = hash;
-          next();
-        });
+          .hash(user.password, salt)
+          .then((hash) => {
+            user.password = hash;
+            next();
+          });
       })
       .catch(next);
   } else {

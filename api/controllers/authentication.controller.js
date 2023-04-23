@@ -23,6 +23,7 @@ module.exports.logout = (req, res, next) => {
     req.session = null;
     res.clearCookie('connect.sid')
     res.clearCookie('sessionid')
+    res.status(200).send()
   });
 }
 

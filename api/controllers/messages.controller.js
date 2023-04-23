@@ -1,8 +1,8 @@
 const Message = require('../models/message.model');
 
 module.exports.create = (req, res, next) => {
-  //TODO meter por defecto el id de la Home y el del owner cuando hayamos hecho autenticación
   //TODO replies
+  //TODO cambiar req.body
   req.body.home = req.user.home
   req.body.owner = req.user
   Message.create(req.body)
@@ -12,8 +12,8 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
   Message.find({ home: req.user.home })
-  //.populate('user') haría falta para poner el autor del mensaje????
-  //.sort({createdAt: desc})  para ordenarlos del más nuevo al más antiguo????
+    .populate('owner') //haría falta para poner el autor del mensaje????
+    //.sort({createdAt: desc})  para ordenarlos del más nuevo al más antiguo????
     .then((messages) => res.json(messages))
     .catch(next);
 };
@@ -25,6 +25,7 @@ module.exports.delete = (req, res, next) => {
 };
 
 module.exports.update = (req, res, next) => {
+  //TODO cambiar el req.body
   Object.assign(req.message, req.body);
 
   req.message

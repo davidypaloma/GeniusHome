@@ -1,7 +1,7 @@
 const CleaningTask = require('../models/cleaning-task.model');
 
 module.exports.create = (req, res, next) => {
-  //TODO meter por defecto el id de la Home cuando hayamos hecho autenticación
+  //TODO cambiar el req.body
   //En react tendrá que tener un select para ver a quién se le asigna
   req.body.home = req.user.home
   CleaningTask.create(req.body)

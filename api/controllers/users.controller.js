@@ -2,7 +2,7 @@ const User = require('../models/user.model');
 const createError = require('http-errors');
 
 module.exports.create = (req, res, next) => {
-  
+  //TODO cambiar el req.body
   User.create(req.body)
     .then((user) => res.status(201).json(user))
     .catch(next);
@@ -20,7 +20,7 @@ module.exports.delete = (req, res, next) => {
 };
 
 module.exports.update = (req, res, next) => {
-  
+  //TODO cambiar el req.body
   Object.assign(req.user, req.body);
 
   req.user

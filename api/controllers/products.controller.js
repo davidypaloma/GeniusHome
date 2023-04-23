@@ -1,7 +1,7 @@
 const Product = require('../models/product.model');
 
 module.exports.create = (req, res, next) => {
-  //TODO meter por defecto el id de la Home cuando hayamos hecho autenticación
+  //TODO cambiar el req.body
   req.body.home = req.user.home
   Product.create(req.body)
     .then((product) => res.status(201).json(product))
@@ -21,6 +21,7 @@ module.exports.delete = (req, res, next) => {
 };
 
 module.exports.update = (req, res, next) => {
+  //TODO cambiar el req.body
   Object.assign(req.product, req.body);
 
   req.product

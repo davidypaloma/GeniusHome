@@ -23,7 +23,7 @@ const productSchema = new Schema(
     }
   },
   {
-    toJson: {
+    toJSON: {
       transform: function (doc, ret) {
         delete ret.__v;
         ret.id = ret._id;

@@ -16,6 +16,7 @@ const todo = (req, res, next) => { res.send("TODO") }
 
 router.post('/signup', users.create);
 router.post('/login', auth.login);
+router.post('/logout', auth.logout);
 
 router.get('/profile', secureMid.isAuthenticated, users.detail);
 router.delete('/profile', secureMid.isAuthenticated, users.delete);
