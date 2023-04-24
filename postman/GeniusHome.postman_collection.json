@@ -1,0 +1,555 @@
+{
+	"info": {
+		"_postman_id": "2ecc6ea3-84fa-451d-ab17-6a258bd39106",
+		"name": "GeniusHome",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26690743",
+		"_collection_link": "https://lively-meadow-297548.postman.co/workspace/New-Team-Workspace~b4ce30aa-0dc5-461b-8f09-036a3011f443/collection/26690743-2ecc6ea3-84fa-451d-ab17-6a258bd39106?action=share&creator=26690743&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Homes",
+			"item": [
+				{
+					"name": "HomeCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"jhsdahuf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/homes",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"homes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HomeDetail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/home-profile",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"home-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HomeUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vickie y sus vikingos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/home-profile",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"home-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HomeDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/home-profile",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"home-profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"paloma.gladine@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_API_URL}}/login",
+									"host": [
+										"{{BASE_API_URL}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UserCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Intruso2\",\r\n    \"alias\": \"malignorrrrr\",\r\n    \"email\": \"example4@example.com\",\r\n    \"password\": \"22222222\",\r\n    \"image\": \"https://picsum.photos/200\",\r\n    \"home\": \"643fb3dfb65e4462f608c2f1\",\r\n    \"fake\": \"ojoigfjsd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/signup",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserDetail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/profile",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"home\": \"64417d40b2f4335a587e2605\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/profile",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/profile",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "ProductCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"naranjas3\",\r\n    \"location\": \"supermercado\",\r\n    \"image\": \"https://picsum.photos/200\",\r\n    \"home\": \"64418b5d48867e24009c82a4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/shopping-list-items",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"shopping-list-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/shopping-list-items",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"shopping-list-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"naranjas2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/shopping-list-items/6442720adc8a3825e262d62e",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"shopping-list-items",
+								"6442720adc8a3825e262d62e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/shopping-list-items/6442764a35fec907d32a1470",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"shopping-list-items",
+								"6442764a35fec907d32a1470"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cleaning tasks",
+			"item": [
+				{
+					"name": "CleaningTasksCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"mandar callar\",\r\n    \"image\": \"https://picsum.photos/200\",\r\n    \"assignedUser\": \"643fc8a136e03dfe0fa295b1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/assigned-tasks/64427e57acbee838af296c24",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"assigned-tasks",
+								"64427e57acbee838af296c24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CleaningTaskList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/assigned-tasks",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"assigned-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CleaningTaskUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"hacer menús\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/assigned-tasks/64427fa22404a12180ebf028",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"assigned-tasks",
+								"64427fa22404a12180ebf028"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CleaningTaskDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/assigned-tasks/64427e57acbee838af296c24",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"assigned-tasks",
+								"64427e57acbee838af296c24"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "MessagesCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"fistro de la pradera\",\r\n    \"urgent\": false,\r\n    \"image\": \"https://picsum.photos/200\",\r\n    \"home\": \"643fb3dfb65e4462f608c2f1\",\r\n    \"owner\": \"643fc8a136e03dfe0fa295b1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/messages",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessagesList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/messages",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessagesUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"fistro de la pradera\",\r\n    \"urgent\": false,\r\n    \"image\": \"https://picsum.photos/200\",\r\n    \"home\": \"643fb3dfb65e4462f608c2f1\",\r\n    \"owner\": \"643fc8a136e03dfe0fa295b1\",\r\n    \"replies\": \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/messages/64428b3d60f7a9f2e5a92939",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"messages",
+								"64428b3d60f7a9f2e5a92939"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessagesDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/messages/64428b3d60f7a9f2e5a92939",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"messages",
+								"64428b3d60f7a9f2e5a92939"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_API_URL",
+			"value": "localhost:3001/api/v1",
+			"type": "string"
+		}
+	]
+}
