@@ -8,16 +8,14 @@ const cleaningTasks = require('../controllers/cleaning-tasks.controller');
 const cleaningTasksMid = require('../middlewares/cleaning-tasks.mid');
 const messages = require('../controllers/messages.controller');
 const messagesMid = require('../middlewares/messages.mid');
-const auth = require('../controllers/authentication.controller');
 const secureMid = require('../middlewares/secure.mid');
 
 
 const todo = (req, res, next) => { res.send("TODO") }
 
 router.post('/signup', users.create);
-router.post('/login', auth.login);
-router.post('/logout', auth.logout);
-
+router.post('/login', users.login);
+router.post('/logout', users.logout);
 router.get('/profile', secureMid.isAuthenticated, users.detail);
 router.delete('/profile', secureMid.isAuthenticated, users.delete);
 router.patch('/profile', secureMid.isAuthenticated, users.update);
@@ -41,8 +39,8 @@ router.patch('/assigned-tasks/:id', secureMid.isAuthenticated, cleaningTasksMid.
 
 router.post('/messages', secureMid.isAuthenticated, messages.create);
 router.get('/messages', secureMid.isAuthenticated, messages.list);
-router.delete('/messages/:id', secureMid.isAuthenticated, messagesMid.exists, messages.delete);
-router.patch('/messages/:id', secureMid.isAuthenticated, messagesMid.exists, messages.update);
+router.delete('/messages/:id', secureMid.isAuthenticated, messagesMid.exists, messagesMid.checkOwner, messages.delete);
+router.patch('/messages/:id', secureMid.isAuthenticated, messagesMid.exists, messagesMid.checkOwner, messages.update);
 
 module.exports = router
 

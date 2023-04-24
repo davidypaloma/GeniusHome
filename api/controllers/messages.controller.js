@@ -12,14 +12,15 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
   Message.find({ home: req.user.home })
-    .populate('owner') //haría falta para poner el autor del mensaje????
+    .populate('owner')
+    .populate('home') //haría falta para poner el autor del mensaje????
     //.sort({createdAt: desc})  para ordenarlos del más nuevo al más antiguo????
     .then((messages) => res.json(messages))
     .catch(next);
 };
 
 module.exports.delete = (req, res, next) => {
-  Message.deleteOne({ _id: req.message.id, home: req.user.home })
+  Message.deleteOne({ _id: req.message.id, home: req.user.home})
     .then(() => res.status(204).send())
     .catch(next)
 };

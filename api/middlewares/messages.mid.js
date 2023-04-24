@@ -2,7 +2,7 @@ const Message = require('../models/message.model');
 const createError = require('http-errors');
 
 module.exports.exists = (req, res, next) => {
-  const messageId = req.params.id
+  const messageId = req.params.id;
   Message.findOne({ _id: messageId, home: req.user.home })
     .then((message) => {
       console.log(messageId, message)
@@ -14,6 +14,12 @@ module.exports.exists = (req, res, next) => {
       }
     })
     .catch(next)
-}
+};
 
-//todo crear author mid
+module.exports.checkOwner = (req, res, next) => {
+  if (req.message.owner.toString() !== req.user.id.toString()) {
+    next(createError(403, 'Forbidden action'));
+  } else {
+    next();
+  }
+};

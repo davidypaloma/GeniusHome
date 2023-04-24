@@ -4,6 +4,7 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const createError = require("http-errors");
+const secureMid = require('./middlewares/secure.mid')
 
 require('./config/db.config');
 
@@ -13,6 +14,7 @@ const { session, loadSessionUser } = require('./config/session.config');
 
 app.use(express.json());
 app.use(logger('dev'));
+app.use(secureMid.cleanBody)
 
 app.use(session);
 app.use(loadSessionUser);

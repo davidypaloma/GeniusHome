@@ -11,6 +11,8 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
   CleaningTask.find({ home: req.user.home })
+    .populate('assignedUser')
+    .populate('home')
     .then((cleaningTasks) => res.json(cleaningTasks))
     .catch(next);
 };

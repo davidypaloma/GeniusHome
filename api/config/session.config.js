@@ -33,4 +33,4 @@ module.exports.loadSessionUser = (req, res, next) => {
   }
 }
 
-//qué hay que poner en SESSION_SECRET y en SESSION_SECURE?
+//TODO archivo config del CORS
