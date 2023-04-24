@@ -15,4 +15,5 @@ module.exports.cleanBody = (req, res, next) => {
     delete req.body.createdAt
     delete req.body.updatedAt
   }
+  next();
 }

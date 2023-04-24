@@ -31,17 +31,17 @@ module.exports.update = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
-  User.findOne(({ email: req.body.email })) //si se hace la confirmación del email se pondría aquí la condición confirm true además del email
+  User.findOne(({ email: req.body.email })) // si se hace la confirmación del email se pondría aquí la condición confirm true además del email
     .then((user) => {
-      // if (!user) {
-      //   return next(createError(401, "Invalid credentials"));
-      // }
+      if (!user) {
+        return next(createError(401, "Invalid credentials"));
+      }
       bcrypt
         .compare(req.body.password, user.password)
         .then((passwordOk) => {
-          // if (!passwordOk) {
-          //   return next(createError(401, "Invalid credentials"))
-          // }
+          if (!passwordOk) {
+            return next(createError(401, "Invalid credentials"))
+          }
           req.session.userId = user.id //código incompleto
           res.set('Set-Cookie', `sessionid=${req.session.userId}`);
           res.status(200).send()
