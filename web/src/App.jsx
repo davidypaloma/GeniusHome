@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import ShoppingListPage from './pages/ShoppingListPage'
@@ -9,11 +9,13 @@ function App() {
 
 
   return (
-    <div className="App h-screen bg-lightGreen">
+    <div className="App h-screen bg-lightGreen font-[Comfortaa]">
 
       <Routes>
 
         <Route path="/login" element={<LoginPage />} />
+
+        <Route path="/" element={<Navigate to="/login" />} />
 
         <Route path="/home" element={<HomePage />} />
 
