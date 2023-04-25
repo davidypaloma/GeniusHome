@@ -11,7 +11,9 @@ require('./config/db.config');
 const app = express();
 
 const { session, loadSessionUser } = require('./config/session.config');
+const cors = require('./config/cors.config')
 
+app.use(cors);
 app.use(express.json());
 app.use(logger('dev'));
 app.use(secureMid.cleanBody)
