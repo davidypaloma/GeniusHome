@@ -31,23 +31,24 @@ module.exports.update = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
+
+  function sendUnauthorizedError() {
+    next(createError(401, { errors: { password: 'Invalid username or password' } }));
+  }
+
   User.findOne(({ email: req.body.email })) // si se hace la confirmación del email se pondría aquí la condición confirm true además del email
     .then((user) => {
-      if (!user) {
-        return next(createError(401, "Invalid credentials"));
-      }
-      bcrypt
+      if (!user) return sendUnauthorizedError();
+
+      return bcrypt
         .compare(req.body.password, user.password)
         .then((passwordOk) => {
-          if (!passwordOk) {
-            return next(createError(401, "Invalid credentials"))
-          }
-          req.session.userId = user.id //código incompleto
-          res.set('Set-Cookie', `sessionid=${req.session.userId}`);
-          res.status(200).send()
+          if (!passwordOk) return sendUnauthorizedError();
+
+          req.session.userId = user.id
+          res.status(201).json(user)
         })
-        .catch(next);
-    })
+    }).catch(next);
 }
 
 module.exports.logout = (req, res, next) => {
