@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import scrollbar from 'tailwind-scrollbar';
+
 export default {
   content: [
     "./index.html",
@@ -25,7 +27,10 @@ export default {
         sizeLg2: '3rem',
         sizeLg3: '4rem',
       },
+
     },
   },
-  plugins: [],
+  plugins: [
+    scrollbar
+  ],
 }

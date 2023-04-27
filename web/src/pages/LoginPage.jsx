@@ -12,9 +12,13 @@ function LoginPage() {
     setShowLogin(false)
   }
 
+  const logInInputClass = "bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80"
+
+  const signUpInputClass = "bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80"
+
   return (
-    <div className="grid grid-cols-2 h-screen">
-      <div className="col-start-1 col-end-2 bg-primaryWhite">
+    <div className="lg:grid lg:grid-cols-2 sm:grid sm:grid-cols-1 h-screen">
+      <div className="col-start-1 col-end-2 bg-primaryWhite h-screen">
 
         <div className="flex justify-center items-end h-1/5 pb-2">
           <img
@@ -36,35 +40,62 @@ function LoginPage() {
             </div>
 
             <div className="w-full">
+
               {showLogin ? (
+
                 <form className="w-full">
                   <div className="w-full mt-10 flex justify-center">
-                    <input className="bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="mail" type="mail" placeholder="example@mail.com" autoComplete="off" />
+
+                    {/* MAIL */}
+                    <input className={`${logInInputClass}`} id="mail" type="mail" placeholder="example@mail.com" autoComplete="off" />
                   </div>
+
                   <div className="w-full mt-4 flex justify-center">
-                    <input className="bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="password" type="password" placeholder="******************" />
+
+                    {/* PASSWORD */}
+                    <input className={`${logInInputClass}`} id="password" type="password" placeholder="******************" />
+
                   </div>
                   <div className="w-full flex justify-center mt-4">
                     <button className="bg-lightRed rounded-lg text-primaryWhite w-1/5 h-14">Continue</button>
                   </div>
+
                 </form>
+
               ) : (
+
                 <form className="w-full -mb-10">
+
+                  {/* NAME */}
                   <div className="w-full mt-10 flex justify-center">
-                    <input className="bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="text" type="text" placeholder="Your name" autoComplete="off" />
+                    <input className={`${signUpInputClass}`} id="text" type="text" placeholder="Your name" autoComplete="off" />
                   </div>
+
+                  {/* ALIAS */}
                   <div className="w-full mt-2 flex justify-center">
-                    <input className="bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="text" type="text" placeholder="Write an alias" />
+                    <input className={`${signUpInputClass}`} id="text" type="text" placeholder="Write an alias" />
                   </div>
+
+                  {/* MAIL */}
                   <div className="w-full mt-2 flex justify-center">
-                    <input className="bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="mail" type="mail" placeholder="example@mail.com" />
+                    <input className={`${signUpInputClass}`} id="mail" type="mail" placeholder="example@mail.com" />
                   </div>
+
+                  {/* PASSWORD */}
                   <div className="w-full mt-2 flex justify-center">
-                    <input className="bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="password" type="password" placeholder="******************" />
+                    <input className={`${signUpInputClass}`} id="password" type="password" placeholder="******************" />
                   </div>
+
+
                   <div className="w-full mt-2 flex justify-center gap-1">
+
+                    {/* NEWHOME */}
                     <input className="bg-mediumGreen appearance-none rounded-lg w-1/5 h-14 py-2 px-2 text-center text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="text" type="text" placeholder="New Home" />
+
+                    {/* HOMEID */}
                     <input className="bg-mediumGreen appearance-none rounded-lg w-2/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80" id="text" type="text" placeholder="HomeID" />
+
+
                   </div>
 
                   <div className="w-full flex justify-center mt-4">
@@ -78,7 +109,7 @@ function LoginPage() {
         </div>
 
         <div className="h-1/5 flex justify-center items-end pb-4">
-          <p className="w-1/2 text-center text-sizeMd1 text-darkBlue opacity-50">Join the hundreds of families who already<br /> trust Genious House to manage their home</p>
+          <p className="w-1/2 text-center text-sizeMd1 text-darkBlue opacity-50">Join the hundreds of families who already<br />trust Genious House to manage their home</p>
         </div>
 
       </div>
@@ -90,7 +121,7 @@ function LoginPage() {
         />
       </div>
 
-    </div >
+    </div>
   )
 }
 
