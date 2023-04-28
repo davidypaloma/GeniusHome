@@ -1,8 +1,8 @@
 // import React from 'react'
 
 import ShoppingList from "../components/ShoppingList";
-import SideBar from "../components/SideBar";
-import SideChat from "../components/SideChat";
+import SideBar from "../components/side-bar/SideBar"
+import SideChat from "../components/messages/SideChat";
 
 function ShoppingListPage() {
   return (

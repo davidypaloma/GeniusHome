@@ -1,31 +1,19 @@
 // import React from 'react'
 
-import SideBar from "../components/SideBar"
-import SideChat from "../components/SideChat";
+import SideBar from "../components/side-bar/SideBar"
+import SideChat from "../components/messages/SideChat";
+import Header from "../components/header/header";
 
 function HomePage() {
   return (
     <div className="grid grid-cols-[.7fr,3fr] h-screen">
+
       <div className="">
-
         <SideBar />
-
       </div>
+
       <div className="grid grid-rows-[1.2fr,8fr]">
-        <div className="flex justify-between">
-          <div className="h-full w-1/4 ml-20 flex items-center">
-            <h1 className="text-darkGreen font-bold text-sizeLg2">Home</h1>
-          </div>
-          <div className="h-full w-1/4 grid grid-cols-2 pl-10">
-            <div className="text-darkGreen flex flex-col justify-center text-end">
-              <h2 className="font-semibold text-sizeMd2">Paloma Gladiné</h2>
-              <h4 className="text-sizeMd1">Alias: vikie</h4>
-            </div>
-            <div className="flex items-center px-6">
-              <div className="bg-darkGreen h-20 w-20 rounded-full"></div>
-            </div>
-          </div>
-        </div>
+        <Header />
         <div className="grid grid-cols-[3fr,1fr]">
           <div className="grid grid-rows-[repeat(3,1fr)]">
             <div className="py-4 px-20">
@@ -65,9 +53,7 @@ function HomePage() {
             </div>
           </div>
           <div className="">
-
             <SideChat />
-
           </div>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import { useState } from "react"
+import geniusHomeLogo from "../../assets/geniusHomeLogo.png"
+import geniusHomePic1 from "../../assets/geniusHomePic1.png"
 
 
 function LoginPage() {
@@ -22,7 +24,7 @@ function LoginPage() {
 
         <div className="flex justify-center items-end h-1/5 pb-2">
           <img
-            src="../../public/assets/geniusHomeLogo.png"
+            src={geniusHomeLogo}
             alt="Genius Home Logo"
             className="w-1/3"
           />
@@ -111,11 +113,11 @@ function LoginPage() {
         <div className="h-1/5 flex justify-center items-end pb-4">
           <p className="w-1/2 text-center text-sizeMd1 text-darkBlue opacity-50">Join the hundreds of families who already<br />trust Genious House to manage their home</p>
         </div>
-
       </div>
+      
       <div className="col-start-2 col-end-3 h-screen">
         <img
-          src="../../public/assets/geniusHomePic1.png"
+          src={geniusHomePic1}
           alt="Home picture"
           className="w-full h-full object-cover"
         />

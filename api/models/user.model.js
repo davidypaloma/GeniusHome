@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    name: {
+    userName: {
       type: String,
       required: 'User name is required',
       minlength: [2, 'User name need at least 2 characters']
     },
-    alias: {
+    userAlias: {
       type: String,
       required: 'You need an alias to be part of this family',
       minlength: [2, 'Your alias need at least 2 characters'],
@@ -29,7 +29,7 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      required: 'Your image is required',
+      // required: 'Your image is required',
       // match: [/^https?:\/\/.+\.(jpg|jpeg|png)$/, "Image URL must be valid"]
       default: "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
     },

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const homeSchema = new Schema(
   {
-    name: {
+    homeName: {
       type: String,
       required: 'Home name is required',
       minlength: [3, 'Home name needs at least 3 chars'],
