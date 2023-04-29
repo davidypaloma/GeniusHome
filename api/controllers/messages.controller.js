@@ -12,8 +12,7 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
   Message.find({ home: req.user.home })
-    .populate('owner')
-    .populate('home') //haría falta para poner el autor del mensaje????
+    .populate('owner home')
     //.sort({createdAt: desc})  para ordenarlos del más nuevo al más antiguo????
     .then((messages) => res.json(messages))
     .catch(next);
