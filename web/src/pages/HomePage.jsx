@@ -1,8 +1,20 @@
+import { useEffect, useState } from "react";
 import PageLayout from "../components/layout/PageLayout";
 import LargeWidget from "../components/widgets/LargeWidget";
 import SmallWidget from "../components/widgets/SmallWidget";
+import cleaningTaskService from '../services/cleaning-tasks'
 
 function HomePage() {
+  const [cleaningTasks, setCleaningTasks] = useState([])
+
+  useEffect(() => {
+    cleaningTaskService.list()
+      .then((cleaningTasksResponse) => {
+        console.log(cleaningTasksResponse);
+        setCleaningTasks(cleaningTasksResponse)
+      })
+      .catch(console.error)
+  }, [])
   return (
     <>
       <PageLayout title="Home">
@@ -14,7 +26,11 @@ function HomePage() {
           </LargeWidget>
 
           <LargeWidget title="Cleaning tasks" date="21/04/2023">
-            {/* children */}
+            <div className="mt-8 text-start">
+              {cleaningTasks.map((cleaningTask) => (
+                <div key={cleaningTask.id}>{cleaningTask.name}</div>
+              ))}
+            </div>
           </LargeWidget>
 
           <div className="py-4 px-20 grid grid-cols-2 gap-40">
@@ -27,7 +43,7 @@ function HomePage() {
             </SmallWidget>
 
           </div>
-          
+
         </div>
 
       </PageLayout>

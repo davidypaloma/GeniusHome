@@ -1,5 +1,3 @@
-// import React from 'react'
-
 function SideChat() {
   return (
     <div className="w-full h-full bg-darkBlue px-4 py-6 flex flex-col justify-between rounded-tl-[6rem]">
