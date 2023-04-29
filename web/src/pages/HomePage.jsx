@@ -1,76 +1,37 @@
-// import React from 'react'
-
-import SideBar from "../components/side-bar/SideBar"
-import SideChat from "../components/messages/SideChat";
-import Header from "../components/header/header";
+import PageLayout from "../components/layout/PageLayout";
+import LargeWidget from "../components/widgets/LargeWidget";
+import SmallWidget from "../components/widgets/SmallWidget";
 
 function HomePage() {
   return (
-    <div className="grid grid-cols-[.7fr,3fr] h-screen">
+    <>
+      <PageLayout title="Home">
 
-      <div className="">
-        <SideBar />
-      </div>
+        <div className="grid grid-rows-[repeat(3,1fr)]">
 
-      <div className="grid grid-rows-[1.2fr,8fr]">
-        <div className="flex justify-between">
-          <div className="h-full w-2/4 ml-20 flex items-center">
-            <h1 className="text-darkGreen font-bold text-sizeLg2">Home</h1>
+          <LargeWidget title="Shopping list" date="19/04/2023">
+            {/* children */}
+          </LargeWidget>
+
+          <LargeWidget title="Cleaning tasks" date="21/04/2023">
+            {/* children */}
+          </LargeWidget>
+
+          <div className="py-4 px-20 grid grid-cols-2 gap-40">
+            <SmallWidget title="Weather">
+              {/* children */}
+            </SmallWidget>
+
+            <SmallWidget title="Calendar">
+              {/* children */}
+            </SmallWidget>
+
           </div>
-          <div className="h-full w-1/4 flex mr-2">
-            <div className="w-2/3 text-darkGreen flex flex-col justify-center pr-2 text-end">
-              <h2 className="font-semibold text-sizeMd2">Paloma Gladiné</h2>
-              <h4 className="text-sizeMd1">Alias: vikie</h4>
-            </div>
-            <div className="w-1/3 flex items-center justify-center">
-              <div className="bg-darkGreen h-14 w-14 rounded-full"></div>
-            </div>
-          </div>
+          
         </div>
-        <div className="grid grid-cols-[3fr,1fr]">
-          <div className="grid grid-rows-[repeat(3,1fr)]">
-            <div className="py-4 px-20">
 
-              <div className="bg-primaryWhite h-full rounded-[2rem] py-4 px-8">
-                <div className="flex justify-between">
-                  <p>Shopping List</p>
-                  <p>Last update: 19 / 04 /2023</p>
-                </div>
-              </div>
-
-            </div>
-            <div className="py-4 px-20">
-
-              <div className="bg-primaryWhite h-full rounded-[2rem] py-4 px-8">
-                <div className="flex justify-between">
-                  <p>Cleaning Tasks</p>
-                  <p>Last update: 19 / 04 /2023</p>
-                </div>
-              </div>
-
-            </div>
-            <div className="py-4 px-20 grid grid-cols-2 gap-40">
-
-              <div className="bg-primaryWhite h-full rounded-[2rem] py-4 px-8">
-                <div className="flex justify-between">
-                  <p>Weather</p>
-                </div>
-              </div>
-
-              <div className="bg-primaryWhite h-full rounded-[2rem] py-4 px-8">
-                <div className="flex justify-between">
-                  <p>Calendar</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div className="">
-            <SideChat />
-          </div>
-        </div>
-      </div>
-    </div>
+      </PageLayout>
+    </>
   );
 }
 

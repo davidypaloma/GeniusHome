@@ -5,4 +5,17 @@ const http = axios.create({
   withCredentials: true
 })
 
+http.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    const status = error.response?.status;
+    if (status === 401 && !window.location.href.includes('login')) {
+      window.location.href = '/login';
+      return Promise.resolve();
+    } else {
+      return Promise.reject(error);
+    }
+  }
+)
+
 export default http
