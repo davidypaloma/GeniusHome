@@ -2,15 +2,25 @@ import { NavLink } from 'react-router-dom'
 import geniusHomeLogo from "../../assets/geniusHomeLogo.png"
 import geniusHomePic2 from "../../assets/geniusHomePic2.png"
 import { AuthContext } from '../../contexts/AuthStore'
+import userService from '../../services/users'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 const renderSideBarClassName = ({ isActive }) => isActive ? 'bg-lightRed text-primaryWhite' : 'text-darkGreen font-bold w-2/3 mt-4 py-2 pl-4 rounded-lg hover:bg-lightRed hover:text-primaryWhite'
 
 
 function SideBar() {
-  const { user } = useContext(AuthContext)
-  
-  const handleLogout = () => {
+  const { user, onUserChange } = useContext(AuthContext)
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    userService.logout()
+      .then(() => {
+        onUserChange()
+        navigate('/login')
+      })
+      .catch((error) => console.error(error))
   }
 
   return (
@@ -35,7 +45,7 @@ function SideBar() {
         <div className="flex flex-col">
           <span className="text-darkBlue font-bold pt-12 hover:cursor-default">Account management</span>
           <NavLink to="/#" className={renderSideBarClassName}>Profile</NavLink>
-          <button onClick={handleLogout} className={renderSideBarClassName}>Log out</button>
+          <button onClick={handleLogout} className='text-left text-darkGreen font-bold w-2/3 mt-4 py-2 pl-4 rounded-lg hover:bg-lightRed hover:text-primaryWhite'>Log out</button>
         </div>
       </nav>
 
