@@ -2,7 +2,7 @@
 
 function SideChat() {
   return (
-    <div className="w-96 h-full bg-darkBlue px-4 py-6 flex flex-col justify-between rounded-tl-[8rem]">
+    <div className="w-full h-full bg-darkBlue px-4 py-6 flex flex-col justify-between rounded-tl-[6rem]">
       <div>
         <h2 className="text-gray-200 mb-8 text-center">Today</h2>
       </div>

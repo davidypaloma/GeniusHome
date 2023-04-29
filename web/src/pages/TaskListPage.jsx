@@ -1,8 +1,12 @@
 // import React from 'react'
 
+import ShoppingListForm from "../components/ShoppingListForm"
+
 function TaskListPage() {
   return (
-    <div>TaskListPage</div>
+    <div>
+      <ShoppingListForm />
+    </div>
   )
 }
 
