@@ -33,7 +33,7 @@ function SideBar() {
         />
       </div>
 
-      <nav className="w-full h-3/6 flex flex-col pl-24">
+      <nav className="w-full h-4/6 flex flex-col justify-center pl-24">
         <div className="flex flex-col">
           <span className="text-darkBlue font-bold hover:cursor-default">Organisation</span>
           <NavLink to="/#" className={renderSideBarClassName}>Shopping list</NavLink>
@@ -49,7 +49,7 @@ function SideBar() {
         </div>
       </nav>
 
-      <div className="w-full h-2/6">
+      <div className="w-full h-[30%]">
         <img
           src={geniusHomePic2}
           alt="Home picture"
