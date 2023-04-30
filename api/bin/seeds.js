@@ -66,24 +66,28 @@ const _products = [{
   "location": "supermercado",
   "image": "https://picsum.photos/200",
   "type": "fruta",
+  "quantity": "2kg",
   "home": null
 }, {
   "name": "naranjas",
   "location": "supermercado",
   "image": "https://picsum.photos/200",
   "type": "fruta",
+  "quantity": "2kg",
   "home": null
 }, {
   "name": "pollo",
   "location": "supermercado",
   "image": "https://picsum.photos/200",
   "type": "carne",
+  "quantity": "2kg",
   "home": null
 }, {
   "name": "salmon",
   "location": "supermercado",
   "image": "https://picsum.photos/200",
   "type": "pescado",
+  "quantity": "2kg",
   "home": null
 }]
 
