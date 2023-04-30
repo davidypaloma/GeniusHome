@@ -1,11 +1,12 @@
 // import React from 'react'
 
-import ShoppingListForm from "../components/shopping-list/ShoppingItemForm"
+import ShoppingItemForm from "../components/shopping-list/ShoppingItemForm"
+
 
 function TaskListPage() {
   return (
     <div>
-      <ShoppingListForm />
+      <ShoppingItemForm />
     </div>
   )
 }

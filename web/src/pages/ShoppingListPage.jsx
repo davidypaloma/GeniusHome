@@ -3,6 +3,7 @@
 import ShoppingList from "../components/shopping-list/ShoppingList";
 import SideBar from "../components/side-bar/SideBar"
 import SideChat from "../components/messages/SideChat";
+import ShoppingList from "../components/shopping-list/ShoppingList";
 
 function ShoppingListPage() {
   return (
@@ -27,7 +28,7 @@ function ShoppingListPage() {
         </div>
 
         <div className="h-full grid grid-cols-[3fr,1fr]">
-        
+
           <div className="h-full grid grid-rows-[.8fr,.4fr]">
             <div className="h-full py-4 px-20">
 
@@ -40,6 +41,7 @@ function ShoppingListPage() {
 
             <div className="py-4 px-20 h-48">
               <div className="bg-primaryWhite h-full rounded-[2rem] py-4 px-8">
+
 
               </div>
             </div>
