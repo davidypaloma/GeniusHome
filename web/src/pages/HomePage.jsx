@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import LargeWidget from "@/components/widgets/LargeWidget";
 import SmallWidget from "@/components/widgets/SmallWidget";
-import cleaningTaskService from '@/services/cleaning-tasks'
+import cleaningTaskService from '@/services/cleaning-tasks';
+import shoppingListService from '@/services/shopping-list'
 import { format } from "date-fns";
 
 function HomePage() {
   const [cleaningTasks, setCleaningTasks] = useState([])
+  const [shoppingList, setShoppingList] = useState([])
   const [lastUpdate, setLastUpdate] = useState("")
 
   useEffect(() => {
@@ -18,6 +20,17 @@ function HomePage() {
       })
       .catch(console.error)
   }, [])
+
+  useEffect(() => {
+    shoppingListService.list()
+      .then((shoppingListResponse) => {
+        console.log(shoppingListResponse);
+        setShoppingList(shoppingListResponse)
+        setLastUpdate(format(new Date(cleaningTasksResponse[0].updatedAt), 'dd/MM/yyyy'))
+      })
+      .catch(console.error)
+  }, [])
+
   return (
     <>
       <PageLayout title="Home">
@@ -25,7 +38,11 @@ function HomePage() {
         <div className="grid grid-rows-[repeat(3,1fr)]">
 
           <LargeWidget title="Shopping list" date={lastUpdate}>
-            {/* children */}
+            <div>
+              {shoppingList.map((product) => (
+                <div key={product.id}>{product.name}</div>
+              ))}
+            </div>
           </LargeWidget>
 
           <LargeWidget title="Cleaning tasks" date={lastUpdate}>

@@ -23,6 +23,9 @@ const productSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Home"
+    },
+    quantity: {
+      type: String,
     }
   },
   {

@@ -36,8 +36,8 @@ function SideBar() {
       <nav className="w-full h-4/6 flex flex-col justify-center pl-24">
         <div className="flex flex-col">
           <span className="text-darkBlue font-bold hover:cursor-default">Organisation</span>
-          <NavLink to="/#" className={renderSideBarClassName}>Shopping list</NavLink>
-          <NavLink to="/#" className={renderSideBarClassName}>Cleaning tasks</NavLink>
+          <NavLink to="/shopping-list2" className={renderSideBarClassName}>Shopping list</NavLink>
+          <NavLink to="/task-list" className={renderSideBarClassName}>Cleaning tasks</NavLink>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Calendar</span>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Contacts</span>
         </div>
