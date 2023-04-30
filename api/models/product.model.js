@@ -16,6 +16,9 @@ const productSchema = new Schema(
     image: {
       type: String,
     },
+    type: {
+      type: String
+    },
     home: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -23,6 +26,7 @@ const productSchema = new Schema(
     }
   },
   {
+    timestamps: true,
     toJSON: {
       transform: function (doc, ret) {
         delete ret.__v;

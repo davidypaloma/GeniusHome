@@ -13,13 +13,13 @@ module.exports.create = (req, res, next) => {
 module.exports.list = (req, res, next) => {
   Message.find({ home: req.user.home })
     .populate('owner home')
-    //.sort({createdAt: desc})  para ordenarlos del más nuevo al más antiguo????
+    .sort({ createdAt: 'desc' })
     .then((messages) => res.json(messages))
     .catch(next);
 };
 
 module.exports.delete = (req, res, next) => {
-  Message.deleteOne({ _id: req.message.id, home: req.user.home})
+  Message.deleteOne({ _id: req.message.id, home: req.user.home })
     .then(() => res.status(204).send())
     .catch(next)
 };

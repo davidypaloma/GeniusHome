@@ -21,6 +21,7 @@ const cleaningTaskSchema = new Schema(
     },
   },
   {
+    timestamps: true,
     toJSON: {
       transform: function (doc, ret) {
         delete ret.__v;

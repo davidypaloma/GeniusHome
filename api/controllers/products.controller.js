@@ -11,6 +11,7 @@ module.exports.create = (req, res, next) => {
 module.exports.list = (req, res, next) => {
   Product.find({ home: req.user.home })
     .populate('home')
+    .sort({ updatedAt: 'desc' })
     .then((products) => res.json(products))
     .catch(next);
 };

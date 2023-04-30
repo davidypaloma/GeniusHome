@@ -23,7 +23,7 @@ const messageSchema = new Schema(
     },
   },
   {
-    // timestamps: true,
+    timestamps: true,
     toJSON: {
       transform: function (doc, ret) {
         delete ret.__v;
