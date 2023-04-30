@@ -1,7 +1,6 @@
 // import React from 'react'
 
-import ShoppingItemForm from "../components/shopping-list/ShoppingItemForm"
-
+import ShoppingListForm from "@/components/shopping-list/ShoppingItemForm"
 
 function TaskListPage() {
   return (

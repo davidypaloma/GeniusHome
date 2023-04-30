@@ -1,6 +1,6 @@
-import SideBar from "../../components/side-bar/SideBar"
-import SideChat from "../../components/messages/SideChat";
-import Header from "../../components/header/header";
+import SideBar from "@/components/side-bar/SideBar"
+import SideChat from "@/components/messages/SideChat";
+import Header from "@/components/header/header";
 
 function PageLayout({ title, children }) {
   return (

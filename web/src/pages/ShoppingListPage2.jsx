@@ -1,6 +1,6 @@
-import ShoppingList from "../components/shopping-list/ShoppingList";
-import PageLayout from "../components/layout/PageLayout";
-import ShoppingItemForm from "../components/shopping-list/ShoppingItemForm";
+import ShoppingList from "@/components/shopping-list/ShoppingList";
+import PageLayout from "@/components/layout/PageLayout";
+import ShoppingItemForm from "@/components/shopping-list/ShoppingItemForm";
 
 function ShoppingListPage2() {
   return (

@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import geniusHomeLogo from "../../assets/geniusHomeLogo.png"
-import geniusHomePic2 from "../../assets/geniusHomePic2.png"
-import { AuthContext } from '../../contexts/AuthStore'
-import userService from '../../services/users'
+import geniusHomeLogo from "@/assets/geniusHomeLogo.png"
+import geniusHomePic2 from "@/assets/geniusHomePic2.png"
+import { AuthContext } from '@/contexts/AuthStore'
+import userService from '@/services/users'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 

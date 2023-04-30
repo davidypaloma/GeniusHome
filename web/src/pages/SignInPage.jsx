@@ -1,7 +1,7 @@
-import AuthPageLayout from "../components/auth/AuthPageLayout"
-import LoginForm from "../components/auth/auth-forms/LoginForm"
+import AuthPageLayout from "@/components/auth/AuthPageLayout"
+import LoginForm from "@/components/auth/auth-forms/LoginForm"
 import { useState } from "react"
-import SignupForm from "../components/auth/auth-forms/SignupForm";
+import SignupForm from "@/components/auth/auth-forms/SignupForm";
 
 
 function SignInPage() {

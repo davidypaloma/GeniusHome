@@ -2,6 +2,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 // import LoginPage from './pages/LoginPage'
 import ShoppingListPage2 from './pages/ShoppingListPage2'
+import ShoppingListPage from './pages/ShoppingListPage'
 import TaskListPage from './pages/TaskListPage'
 import SignInPage from './pages/SignInPage'
 import AuthStore from './contexts/AuthStore'
@@ -23,7 +24,8 @@ function App() {
 
             <Route path="/home" element={<HomePage />} />
 
-            <Route path="/shopping-list" element={<ShoppingListPage2 />} />
+            <Route path="/shopping-list2" element={<ShoppingListPage2 />} />
+            <Route path="/shopping-list" element={<ShoppingListPage />} />
 
             <Route path="/task-list" element={<TaskListPage />} />
 

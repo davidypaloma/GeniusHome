@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import PageLayout from "../components/layout/PageLayout";
-import LargeWidget from "../components/widgets/LargeWidget";
-import SmallWidget from "../components/widgets/SmallWidget";
-import cleaningTaskService from '../services/cleaning-tasks'
+import PageLayout from "@/components/layout/PageLayout";
+import LargeWidget from "@/components/widgets/LargeWidget";
+import SmallWidget from "@/components/widgets/SmallWidget";
+import cleaningTaskService from '@/services/cleaning-tasks'
 
 function HomePage() {
   const [cleaningTasks, setCleaningTasks] = useState([])
