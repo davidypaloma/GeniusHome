@@ -7,7 +7,7 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
-const renderSideBarClassName = ({ isActive }) => isActive ? 'bg-lightRed text-primaryWhite' : 'text-darkGreen font-bold w-2/3 mt-4 py-2 pl-4 rounded-lg hover:bg-lightRed hover:text-primaryWhite'
+const renderSideBarClassName = ({ isActive }) => isActive ? 'bg-lightRed text-primaryWhite' : 'text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 rounded-lg hover:bg-lightRed hover:text-primaryWhite'
 
 
 function SideBar() {
@@ -38,14 +38,14 @@ function SideBar() {
           <span className="text-darkBlue font-bold hover:cursor-default">Organisation</span>
           <NavLink to="/#" className={renderSideBarClassName}>Shopping list</NavLink>
           <NavLink to="/#" className={renderSideBarClassName}>Cleaning tasks</NavLink>
-          <span className="text-darkGreen font-bold w-2/3 mt-4 py-2 pl-4 text-opacity-25 hover:cursor-default">Calendar</span>
-          <span className="text-darkGreen font-bold w-2/3 mt-4 py-2 pl-4 text-opacity-25 hover:cursor-default">Contacts</span>
+          <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Calendar</span>
+          <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Contacts</span>
         </div>
 
         <div className="flex flex-col">
-          <span className="text-darkBlue font-bold pt-12 hover:cursor-default">Account management</span>
+          <span className="text-darkBlue font-bold pt-6 hover:cursor-default">Account management</span>
           <NavLink to="/#" className={renderSideBarClassName}>Profile</NavLink>
-          <button onClick={handleLogout} className='text-left text-darkGreen font-bold w-2/3 mt-4 py-2 pl-4 rounded-lg hover:bg-lightRed hover:text-primaryWhite'>Log out</button>
+          <button onClick={handleLogout} className='text-left text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 rounded-lg hover:bg-lightRed hover:text-primaryWhite'>Log out</button>
         </div>
       </nav>
 
