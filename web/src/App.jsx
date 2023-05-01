@@ -25,7 +25,6 @@ function App() {
             <Route path="/home" element={<HomePage />} />
 
             <Route path="/shopping-list2" element={<ShoppingListPage2 />} />
-            <Route path="/shopping-list" element={<ShoppingListPage />} />
 
             <Route path="/task-list" element={<TaskListPage />} />
 

@@ -1,12 +1,45 @@
 const User = require('../models/user.model');
+const Home = require('../models/home.model');
 const createError = require('http-errors');
 const bcrypt = require('bcryptjs')
 
-module.exports.create = (req, res, next) => {
-  //TODO cambiar el req.body
-  User.create(req.body)
-    .then((user) => res.status(201).json(user))
-    .catch(next);
+module.exports.create = async (req, res, next) => {
+  // TODO: create home code instead of homeId (i.e. "home-name") which also solve the Cast error 
+
+  if (req.body.homeId && req.body.homeName) {
+    return next(createError(400, { errors: { homeId: 'Cannot send both New Home and Home Id' } }))
+  }
+  if (!req.body.homeId && !req.body.homeName) {
+    return next(createError(400, { errors: { homeId: 'You should fill either New Home or Home Id' } }))
+  }
+
+  let newHome = {}
+  if (req.body.homeName) {
+    newHome = await Home.create({ homeName: req.body.homeName })
+  }
+
+  const newUser = {
+    userName: req.body.userName,
+    userAlias: req.body.userAlias,
+    email: req.body.email,
+    password: req.body.password,
+    image: req.body.image,
+    home: req.body.homeId || newHome.id
+  }
+
+  try {
+    const home = await Home.findById(newUser.home)
+
+    if (!home) {
+      return next(createError(400, { errors: { homeId: 'Invalid home' } }))
+    }
+
+    const user = await User.create(newUser)
+    res.status(201).json(user)
+
+  } catch (error) {
+    next(error)
+  }
 };
 
 module.exports.detail = (req, res, next) => {
@@ -21,8 +54,15 @@ module.exports.delete = (req, res, next) => {
 };
 
 module.exports.update = (req, res, next) => {
-  //TODO cambiar el req.body
-  Object.assign(req.user, req.body);
+  const updatedUser = {
+    userName: req.body.userName,
+    userAlias: req.body.userAlias,
+    email: req.body.email,
+    password: req.body.password,
+    image: req.body.image,
+    home: req.body.homeId
+  }
+  Object.assign(req.user, updatedUser);
 
   req.user
     .save()

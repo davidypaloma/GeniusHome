@@ -26,7 +26,7 @@ function HomePage() {
       .then((shoppingListResponse) => {
         console.log(shoppingListResponse);
         setShoppingList(shoppingListResponse)
-        setLastUpdate(format(new Date(cleaningTasksResponse[0].updatedAt), 'dd/MM/yyyy'))
+        setLastUpdate(format(new Date(shoppingListResponse[0].updatedAt), 'dd/MM/yyyy'))
       })
       .catch(console.error)
   }, [])

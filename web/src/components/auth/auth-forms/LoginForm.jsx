@@ -4,7 +4,7 @@ import userService from '@/services/users'
 import { AuthContext } from '@/contexts/AuthStore';
 import { useNavigate } from 'react-router-dom';
 
-function LoginForm() {
+function LoginForm({ defaultEmail }) {
   const { register, handleSubmit, reset, setError, formState: { errors } } = useForm({ mode: 'onBlur' })
   const [serverError, setServerError] = useState();
   const { onUserChange } = useContext(AuthContext)
@@ -47,6 +47,7 @@ function LoginForm() {
           type="email"
           placeholder="example@mail.com"
           autoComplete="off"
+          value={defaultEmail}
           {...register('email', {
             required: 'enter your email',
             pattern: {

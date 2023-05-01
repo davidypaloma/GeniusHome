@@ -35,6 +35,7 @@ const userSchema = new Schema(
     },
     home: {
       type: mongoose.Schema.Types.ObjectId,
+      required: 'Home is required',
       ref: "Home"
     },
   },

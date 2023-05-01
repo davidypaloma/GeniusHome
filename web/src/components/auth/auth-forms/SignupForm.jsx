@@ -2,15 +2,18 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import userService from '@/services/users'
 
-function SignupForm() {
+function SignupForm({ onSignupSuccess }) {
   const { register, handleSubmit, reset, setError, formState: { errors } } = useForm({ mode: 'onBlur' })
   const [serverError, setServerError] = useState();
+
+  const [isHomeIdDisabled, setHomeIdDisabled] = useState(false)
+  const [isHomeNameDisabled, setHomeNameDisabled] = useState(false)
 
   const onSignupSubmit = (user) => {
     setServerError();
     userService.create(user)
-      .then(user => {
-        console.info(user)
+      .then((createdUser) => {
+        onSignupSuccess(createdUser.email)
         reset()
       })
       .catch(error => {
@@ -93,20 +96,30 @@ function SignupForm() {
 
         {/* NEWHOME */}
         <input
-          className={`${signUpInputClass} ${errors.homeName ? 'placeholder-red-600' : ''}`}
+          className={`${signUpInputClass} ${isHomeNameDisabled ? 'bg-opacity-50': ''} ${errors.homeName ? 'placeholder-red-600' : ''}`}
           id="homeName"
           type="text"
+          disabled={isHomeNameDisabled}
           placeholder="New Home"
-          {...register('homeName')} />
+          {...register('homeName', {
+            onChange(e) {
+              setHomeIdDisabled(!!e.target.value)
+            }
+          })} />
         {errors.homeName && <div className='text-red-600'>{errors.homeName?.message}</div>}
 
         {/* HOMEID */}
         <input
-          className={`${signUpInputClass} ${errors.homeId ? 'placeholder-red-600' : ''}`}
+          className={`${signUpInputClass} ${isHomeIdDisabled ? 'bg-opacity-50': ''} ${errors.homeId ? 'placeholder-red-600' : ''}`}
           id="homeId"
           type="text"
+          disabled={isHomeIdDisabled}
           placeholder="HomeID"
-          {...register('homeId')} />
+          {...register('homeId', {
+            onChange(e) {
+              setHomeNameDisabled(!!e.target.value)
+            }
+          })} />
         {errors.homeId && <div className='text-red-600'>{errors.homeId?.message}</div>}
       </div>
 

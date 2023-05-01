@@ -17,7 +17,10 @@ const productSchema = new Schema(
       type: String,
     },
     type: {
-      type: String
+      type: String,
+    },
+    quantity: {
+      type: String,
     },
     home: {
       type: mongoose.Schema.Types.ObjectId,

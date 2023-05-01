@@ -6,6 +6,7 @@ import SignupForm from "@/components/auth/auth-forms/SignupForm";
 
 function SignInPage() {
   const [showLogin, setShowLogin] = useState(true);
+  const [newUserEmail, setNewUserEmail] = useState('')
 
   const handleShowLogin = () => {
     setShowLogin(true)
@@ -15,6 +16,10 @@ function SignInPage() {
     setShowLogin(false)
   }
 
+  const handleSignupSuccess = (createdUserEmail) => {
+    handleShowLogin()
+    setNewUserEmail(createdUserEmail)
+  }
 
 
   return (
@@ -28,9 +33,9 @@ function SignInPage() {
         </div>
         <div className="w-full">
           {showLogin ? (
-            <LoginForm />
+            <LoginForm defaultEmail={newUserEmail} />
           ) : (
-            <SignupForm />
+            <SignupForm onSignupSuccess={handleSignupSuccess} />
           )}
         </div>
 

@@ -8,31 +8,37 @@ export default function ShoppingItemForm() {
 
         <form>
           <div className="grid md:grid-cols-2 md:gap-6">
+
+            {/* NAME */}
             <div className="relative z-0 w-full mb-4 group">
-              <input type="text" name="floating_productName" id="floating_productName" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-darkGreen peer" placeholder=" " required />
-              <label htmlFor="floating_productName" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-darkborder-darkGreen peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Product name</label>
+              <input type="text" name="name" id="name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-darkGreen peer" placeholder=" " required />
+              <label htmlFor="name" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-darkborder-darkGreen peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Product name</label>
             </div>
+
+            {/* TYPE */}
             <div className="relative z-0 w-full mb-4 group">
-              <select id="productGroup" class="bg-primaryWhite border-2 border-darkGreen text-darkBlue text-sm rounded-lg focus:ring-lightRed focus:border-lighring-lightRed block w-full p-2.5">
+              <select id="type" class="bg-primaryWhite border-2 border-darkGreen text-darkBlue text-sm rounded-lg focus:ring-lightRed focus:border-lighring-lightRed block w-full p-2.5">
                 <option>Meat</option>
                 <option>Fish</option>
                 <option>Fruit</option>
                 <option>Vegetables</option>
                 <option>Home</option>
               </select>
-
             </div>
           </div>
 
-
           <div className="grid md:grid-cols-2 md:gap-6">
+
+            {/* STORE */}
             <div className="relative z-0 w-full mb-4 group">
-              <input type="text" name="floating_supermarket" id="floating_supermarket" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-darkGreen peer" placeholder=" " required />
-              <label htmlFor="floating_supermarket" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-darkborder-darkGreen peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Supermarket</label>
+              <input type="text" name="location" id="location" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-darkGreen peer" placeholder=" " required />
+              <label htmlFor="location" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-darkborder-darkGreen peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Supermarket</label>
             </div>
+
+            {/* QUANTITY */}
             <div className="relative z-0 w-full mb-4 group">
-              <input type="text" name="floating_quantity" id="floating_quantity" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-darkGreen peer" placeholder=" " required />
-              <label htmlFor="floating_quantity" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-darkborder-darkGreen peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Quantity</label>
+              <input type="text" name="quantity" id="quantity" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-darkGreen peer" placeholder=" " required />
+              <label htmlFor="quantity" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-darkborder-darkGreen peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Quantity</label>
             </div>
           </div>
 

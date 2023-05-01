@@ -1,6 +1,6 @@
 import { useState } from "react"
-import geniusHomeLogo from "@/assets/geniusHomeLogo.png"
-import geniusHomePic1 from "@/assets/geniusHomePic1.png"
+import geniusHomeLogo from "../../assets/geniusHomeLogo.png"
+import geniusHomePic1 from "../../assets/geniusHomePic1.png"
 
 
 function LoginPage() {
