@@ -7,8 +7,11 @@ const login = (user) => http.post('/login', user)
 
 const logout = () => http.post('/logout')
 
+const profile = () => http.get('/profile')
+
 export default {
   create,
   login,
-  logout
+  logout,
+  profile
 }

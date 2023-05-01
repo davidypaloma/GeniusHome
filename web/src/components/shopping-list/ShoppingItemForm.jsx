@@ -1,4 +1,4 @@
-// import React from 'react'
+import { useForm } from 'react-hook-form'
 
 export default function ShoppingItemForm() {
   return (
@@ -17,7 +17,7 @@ export default function ShoppingItemForm() {
 
             {/* TYPE */}
             <div className="relative z-0 w-full mb-4 group">
-              <select id="type" class="bg-primaryWhite border-2 border-darkGreen text-darkBlue text-sm rounded-lg focus:ring-lightRed focus:border-lighring-lightRed block w-full p-2.5">
+              <select id="type" className="bg-primaryWhite border-2 border-darkGreen text-darkBlue text-sm rounded-lg focus:ring-lightRed focus:border-lighring-lightRed block w-full p-2.5">
                 <option>Meat</option>
                 <option>Fish</option>
                 <option>Fruit</option>

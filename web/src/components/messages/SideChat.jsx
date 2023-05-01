@@ -1,8 +1,23 @@
+import Message from "./Message"
+
+
+const messages = [
+  { id: 1, text: 'foo g gg ggf gf gf g gf gf ' },
+  { id: 2, text: 'foo fshfdgj sfgnsfdx gfndghn dfghdfng sgfsfg sgsfgb sgfnfgn' },
+  { id: 3, text: 'foo' },
+  { id: 4, text: 'foo' }
+]
+
 function SideChat() {
   return (
-    <div className="w-full h-full bg-darkBlue px-4 py-6 flex flex-col justify-between rounded-tl-[6rem]">
+    <div className="w-full h-full bg-darkGreen px-4 py-6 flex flex-col justify-between rounded-tl-[6rem]">
       <div>
         <h2 className="text-gray-200 mb-8 text-center">Today</h2>
+        <div className="flex flex-col">
+          {messages.map((message, idx) => (
+            <Message key={message.id} text={message.text} isEven={!(idx % 2)} />
+          ))}
+        </div>
       </div>
       <form className="flex flex-col justify-between">
         <textarea

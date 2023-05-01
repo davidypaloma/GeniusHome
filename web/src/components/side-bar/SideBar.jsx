@@ -26,18 +26,18 @@ function SideBar() {
 
   return (
     <div className="w-96 h-screen flex flex-col border-r-2 border-darkGreen">
-      <div className="w-full h-1/6 flex justify-center items-center">
+      <NavLink to="/home" className="w-full h-1/6 flex justify-center items-center">
         <img
           src={geniusHomeLogo}
           alt="Genius Home Logo"
           className="w-1/2"
         />
-      </div>
+      </NavLink>
 
       <nav className="w-full h-4/6 flex flex-col justify-center pl-24">
         <div className="flex flex-col">
           <span className="text-darkBlue font-bold hover:cursor-default">Organisation</span>
-          <NavLink to="/shopping-list2" className={renderSideBarClassName}>Shopping list</NavLink>
+          <NavLink to="/shopping-list" className={renderSideBarClassName}>Shopping list</NavLink>
           <NavLink to="/task-list" className={renderSideBarClassName}>Cleaning tasks</NavLink>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Calendar</span>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Contacts</span>

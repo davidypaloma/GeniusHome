@@ -15,6 +15,7 @@ export default {
         'lightRed': '#F39F91',
         'darkBlue': '#171E37',
         'primaryWhite': '#EDEDED',
+        'lightOrange': '#F4D289'
       },
       fontSize: {
         sizeSm1: '0.25rem',

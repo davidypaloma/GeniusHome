@@ -47,7 +47,7 @@ function LoginForm({ defaultEmail }) {
           type="email"
           placeholder="example@mail.com"
           autoComplete="off"
-          value={defaultEmail}
+          defaultValue={defaultEmail}
           {...register('email', {
             required: 'enter your email',
             pattern: {
