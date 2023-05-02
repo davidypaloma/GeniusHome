@@ -5,12 +5,14 @@ import SmallWidget from "@/components/widgets/SmallWidget";
 import cleaningTaskService from '@/services/cleaning-tasks';
 import shoppingListService from '@/services/shopping-list'
 import { format } from "date-fns";
+import greenArrow from '@/assets/green_arrow.svg'
+import pen from '@/assets/pen.svg'
 
 function HomePage() {
   const [cleaningTasks, setCleaningTasks] = useState([])
   const [shoppingList, setShoppingList] = useState([])
-  const [lastCleaningUpdate, setLastCleaningUpdate] = useState("")
-  const [lastShoppingUpdate, setLastShoppingUpdate] = useState("")
+  const [lastCleaningUpdate, setLastCleaningUpdate] = useState("-")
+  const [lastShoppingUpdate, setLastShoppingUpdate] = useState("-")
 
   useEffect(() => {
     cleaningTaskService.list()
@@ -30,6 +32,12 @@ function HomePage() {
       .catch(console.error)
   }, [])
 
+  function handleTaskDelete(id) {
+    // setCleaningTasks(cleaningTasks.filter((task) => task.id !== id))
+    cleaningTaskService.deleteTask(id)
+      .then(() => setCleaningTasks((prev) => prev.filter((cleaningTask) => cleaningTask.id !== id)))
+  }
+
   return (
     <>
       <PageLayout title="Home">
@@ -37,17 +45,35 @@ function HomePage() {
         <div className="grid grid-rows-[repeat(3,1fr)]">
 
           <LargeWidget title="Shopping list" date={lastShoppingUpdate}>
-            <div>
+            <div className="mt-4">
               {shoppingList.map((product) => (
-                <div key={product.id}>{product.name}</div>
+                <div key={product.id}>
+                  <div className="flex mt-2">
+                    <img
+                      src={greenArrow}
+                      alt="Arrow icon"
+                      className="w-4 h-auto rounded-full mr-2"
+                    />
+                    {product.name}
+                  </div>
+                </div>
               ))}
             </div>
           </LargeWidget>
 
           <LargeWidget title="Cleaning tasks" date={lastCleaningUpdate}>
-            <div className="mt-8 text-start">
+            <div className="mt-4">
               {cleaningTasks.map((cleaningTask) => (
-                <div key={cleaningTask.id}>{cleaningTask.name}</div>
+                <div key={cleaningTask.id} onClick={() => handleTaskDelete(cleaningTask.id)}>
+                  <div className="cursor-default flex mt-2">
+                    <img
+                      src={pen}
+                      alt="Pen icon"
+                      className="w-4 h-auto rounded-full mr-2"
+                    />
+                    {cleaningTask.name}
+                  </div>
+                </div>
               ))}
             </div>
           </LargeWidget>
