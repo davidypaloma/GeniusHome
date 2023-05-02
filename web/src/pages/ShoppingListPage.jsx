@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import ShoppingList from "@/components/shopping-list/ShoppingList";
 import PageLayout from "@/components/layout/PageLayout";
 import ShoppingItemForm from "@/components/shopping-list/ShoppingItemForm";
-import shoppingListService from '@/services/shopping-list'
+import shoppingListService from '@/services/shopping-list';
+import { format } from "date-fns";
 
 
-function ShoppingListPage2() {
+function ShoppingListPage() {
   const [shoppingList, setShoppingList] = useState([])
+  const [lastUpdate, setLastUpdate] = useState("")
 
   useEffect(() => {
     shoppingListService.list()
@@ -14,7 +16,7 @@ function ShoppingListPage2() {
         console.log(shoppingListResponse);
         setShoppingList(shoppingListResponse)
         // TODO: fix nullpointer error
-        setLastUpdate(format(new Date(shoppingListResponse?.[0].updatedAt), 'dd/MM/yyyy'))
+        setLastUpdate(format(new Date(shoppingListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
       })
       .catch(console.error)
   }, [])
@@ -36,4 +38,4 @@ function ShoppingListPage2() {
   );
 }
 
-export default ShoppingListPage2
+export default ShoppingListPage

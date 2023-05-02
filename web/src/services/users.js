@@ -9,6 +9,8 @@ const logout = () => http.post('/logout')
 
 const profile = () => http.get('/profile')
 
+// TODO: const delete y const update
+
 export default {
   create,
   login,

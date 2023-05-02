@@ -7,7 +7,11 @@ function AuthStore({ children }) {
 
   const handleUserChange = (user) => {
     setUser(user);
-    localStorage.setItem('user-data', JSON.stringify(user))
+    if (user) {
+      localStorage.setItem('user-data', JSON.stringify(user))
+    } else {
+      localStorage.removeItem('user-data')
+    }
   }
 
   useEffect(() => {

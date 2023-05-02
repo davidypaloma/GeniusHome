@@ -9,14 +9,14 @@ import { format } from "date-fns";
 function HomePage() {
   const [cleaningTasks, setCleaningTasks] = useState([])
   const [shoppingList, setShoppingList] = useState([])
-  const [lastUpdate, setLastUpdate] = useState("")
+  const [lastCleaningUpdate, setLastCleaningUpdate] = useState("")
+  const [lastShoppingUpdate, setLastShoppingUpdate] = useState("")
 
   useEffect(() => {
     cleaningTaskService.list()
       .then((cleaningTasksResponse) => {
-        console.log(cleaningTasksResponse);
         setCleaningTasks(cleaningTasksResponse)
-        setLastUpdate(format(new Date(cleaningTasksResponse[0].updatedAt), 'dd/MM/yyyy'))
+        setLastCleaningUpdate(format(new Date(cleaningTasksResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
       })
       .catch(console.error)
   }, [])
@@ -24,9 +24,8 @@ function HomePage() {
   useEffect(() => {
     shoppingListService.list()
       .then((shoppingListResponse) => {
-        console.log(shoppingListResponse);
         setShoppingList(shoppingListResponse)
-        setLastUpdate(format(new Date(shoppingListResponse[0].updatedAt), 'dd/MM/yyyy'))
+        setLastShoppingUpdate(format(new Date(shoppingListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
       })
       .catch(console.error)
   }, [])
@@ -37,7 +36,7 @@ function HomePage() {
 
         <div className="grid grid-rows-[repeat(3,1fr)]">
 
-          <LargeWidget title="Shopping list" date={lastUpdate}>
+          <LargeWidget title="Shopping list" date={lastShoppingUpdate}>
             <div>
               {shoppingList.map((product) => (
                 <div key={product.id}>{product.name}</div>
@@ -45,7 +44,7 @@ function HomePage() {
             </div>
           </LargeWidget>
 
-          <LargeWidget title="Cleaning tasks" date={lastUpdate}>
+          <LargeWidget title="Cleaning tasks" date={lastCleaningUpdate}>
             <div className="mt-8 text-start">
               {cleaningTasks.map((cleaningTask) => (
                 <div key={cleaningTask.id}>{cleaningTask.name}</div>
