@@ -32,7 +32,7 @@ function MessageForm({ onNewMessage }) {
       {setServerError && <div className='text-red-600'>{serverError}</div>}
       <textarea
         placeholder="Something to say?"
-        className="h-36 rounded-xl resize-none mb-4 px-4 py-4 text-primaryWhite bg-darkBlue border-2 border-primaryWhite"
+        className="h-24 rounded-xl resize-none mb-4 px-4 py-4 text-primaryWhite bg-darkBlue border-2 border-primaryWhite"
         maxLength={80}
         {...register('text', {
           required: 'Message text is required'
