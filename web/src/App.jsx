@@ -3,7 +3,7 @@ import HomePage from './pages/HomePage'
 // import LoginPage from './pages/LoginPage'
 import ShoppingListPage from './pages/ShoppingListPage'
 import TaskListPage from './pages/TaskListPage'
-import SignInPage from './pages/SignInPage'
+import LogInPage from './pages/LogInPage'
 import AuthStore from './contexts/AuthStore'
 
 
@@ -17,7 +17,7 @@ function App() {
         <div className="h-screen bg-lightGreen font-[Comfortaa]">
           <Routes>
 
-            <Route path="/login" element={<SignInPage />} />
+            <Route path="/login" element={<LogInPage />} />
 
             <Route path="/" element={<Navigate to="/login" />} />
 

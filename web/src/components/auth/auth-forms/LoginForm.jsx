@@ -42,33 +42,33 @@ function LoginForm({ defaultEmail }) {
       {/* MAIL */}
       <div className="w-full mt-10 flex flex-col items-center">
         <input
-          className={`${logInInputClass} ${errors.email ? 'placeholder-red-600' : ''}`}
+          className={`${logInInputClass}`}
           id="email"
           type="email"
           placeholder="example@mail.com"
           autoComplete="off"
           defaultValue={defaultEmail}
           {...register('email', {
-            required: 'enter your email',
+            required: 'Enter your email',
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
               message: 'The format of the email entered is not correct'
             }
           })} />
-        {errors.email && <div className='text-red-600'>{errors.email?.message}</div>}
+        {errors.email && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.email?.message}</div>}
       </div>
 
       {/* PASSWORD */}
       <div className="w-full mt-4 flex flex-col items-center">
         <input
-          className={`${logInInputClass} ${errors.password ? 'placeholder-red-600' : ''}`}
+          className={`${logInInputClass}`}
           id="password"
           type="password"
           placeholder="******************"
           {...register('password', {
-            required: 'enter your password'
+            required: 'Enter your password'
           })} />
-        {errors.password && <div className='text-red-600'>{errors.password?.message}</div>}
+        {errors.password && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.password?.message}</div>}
       </div>
 
       <div className="w-full flex justify-center mt-4">

@@ -23,7 +23,7 @@ function AuthPageLayout({ children }) {
         </div>
 
         <div className="h-1/5 flex justify-center items-end pb-4">
-          <p className="w-1/2 text-center text-sizeMd1 text-darkBlue opacity-50">Join the hundreds of families who already<br /> trust Genius Home to manage their home</p>
+          <p className="w-1/2 text-center text-sm text-darkBlue opacity-50">Join the hundreds of families who already<br />trust Genius Home to manage their home</p>
         </div>
 
       </div>

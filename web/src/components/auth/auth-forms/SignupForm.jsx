@@ -28,7 +28,7 @@ function SignupForm({ onSignupSuccess }) {
       })
   }
 
-  const signUpInputClass = "bg-mediumGreen appearance-none rounded-lg w-3/5 h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80"
+  const signUpInputClass = "bg-mediumGreen appearance-none rounded-lg h-14 py-2 px-6 text-gray-700 leading-tight focus:outline-none placeholder-primaryWhite placeholder:opacity-80"
 
   // TODO: completar validaciones ¿valores por defecto?: p.ej para editar y que tenga los valores anteriores. ¿delay error?: por si hay petición al backend y que no se note cuando el error es en el cliente y cuando viene del back. ¿Joi? 
 
@@ -39,88 +39,93 @@ function SignupForm({ onSignupSuccess }) {
 
       {setServerError && <div className='text-red-600'>{serverError}</div>}
 
-      {/* NAME */}
-      <div className="w-full mt-10 flex flex-col items-center">
-        <input
-          className={`${signUpInputClass} ${errors.userName ? 'placeholder-red-600' : ''}`}
-          id="userName"
-          type="text"
-          placeholder="Your name"
-          autoComplete="off"
-          {...register('userName', {
-            required: 'user name is required'
-          })} />
-        {errors.userName && <div className='text-red-600'>{errors.userName?.message}</div>}
+      <div className="flex justify-center mt-2">
+        {/* NAME */}
+        <div className="w-full mt-2 flex flex-col items-center">
+          <input
+            className={`${signUpInputClass}`}
+            id="userName"
+            type="text"
+            placeholder="Your name"
+            autoComplete="off"
+            {...register('userName', {
+              required: 'User name is required'
+            })} />
+          {errors.userName && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.userName?.message}</div>}
+        </div>
+        {/* ALIAS */}
+        <div className="w-full mt-2 flex flex-col items-center">
+          <input
+            className={`${signUpInputClass}`}
+            id="userAlias"
+            type="text"
+            placeholder="Write an alias"
+            {...register('userAlias', {
+              required: 'Alias is required'
+            })} />
+          {errors.userAlias && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.userAlias?.message}</div>}
+        </div>
       </div>
 
-      {/* ALIAS */}
-      <div className="w-full mt-2 flex flex-col items-center">
-        <input
-          className={`${signUpInputClass} ${errors.userAlias ? 'placeholder-red-600' : ''}`}
-          id="userAlias"
-          type="text"
-          placeholder="Write an alias"
-          {...register('userAlias', {
-            required: 'you need an alias to be part of this family'
-          })} />
-        {errors.userAlias && <div className='text-red-600'>{errors.userAlias?.message}</div>}
+      <div className="flex justify-center mt-2">
+        {/* MAIL */}
+        <div className="w-full flex flex-col items-center">
+          <input
+            className={`${signUpInputClass}`}
+            id="email"
+            type="email"
+            placeholder="example@mail.com"
+            {...register('email', {
+              required: 'Email is required'
+            })} />
+          {errors.email && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.email?.message}</div>}
+        </div>
+        {/* PASSWORD */}
+        <div className="w-full flex flex-col items-center">
+          <input
+            className={`${signUpInputClass}`}
+            id="password"
+            type="password"
+            placeholder="min 8 characters"
+            {...register('password', {
+              required: 'Password is required'
+            })} />
+          {errors.password && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.password?.message}</div>}
+        </div>
       </div>
 
-      {/* MAIL */}
-      <div className="w-full mt-2 flex flex-col items-center">
-        <input
-          className={`${signUpInputClass} ${errors.email ? 'placeholder-red-600' : ''}`}
-          id="email"
-          type="email"
-          placeholder="example@mail.com"
-          {...register('email', {
-            required: 'email is required'
-          })} />
-        {errors.email && <div className='text-red-600'>{errors.email?.message}</div>}
-      </div>
-
-      {/* PASSWORD */}
-      <div className="w-full mt-2 flex flex-col items-center">
-        <input
-          className={`${signUpInputClass} ${errors.password ? 'placeholder-red-600' : ''}`}
-          id="password"
-          type="password"
-          placeholder="min 8 characters"
-          {...register('password', {
-            required: 'password is required'
-          })} />
-        {errors.password && <div className='text-red-600'>{errors.password?.message}</div>}
-      </div>
-
-      <div className="w-full mt-2 flex flex-col items-center gap-1">
-
+      <div className="flex justify-center mt-2">
         {/* NEWHOME */}
-        <input
-          className={`${signUpInputClass} ${isHomeNameDisabled ? 'bg-opacity-50': ''} ${errors.homeName ? 'placeholder-red-600' : ''}`}
-          id="homeName"
-          type="text"
-          disabled={isHomeNameDisabled}
-          placeholder="New Home"
-          {...register('homeName', {
-            onChange(e) {
-              setHomeIdDisabled(!!e.target.value)
-            }
-          })} />
-        {errors.homeName && <div className='text-red-600'>{errors.homeName?.message}</div>}
+        <div className="w-full flex flex-col items-center">
+          <input
+            className={`${signUpInputClass} ${isHomeNameDisabled ? 'bg-opacity-50' : ''} ${errors.homeName ? 'placeholder-red-600' : ''}`}
+            id="homeName"
+            type="text"
+            disabled={isHomeNameDisabled}
+            placeholder="New Home"
+            {...register('homeName', {
+              onChange(e) {
+                setHomeIdDisabled(!!e.target.value)
+              }
+            })} />
+          {errors.homeName && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.homeName?.message}</div>}
+        </div>
 
         {/* HOMEID */}
-        <input
-          className={`${signUpInputClass} ${isHomeIdDisabled ? 'bg-opacity-50': ''} ${errors.homeId ? 'placeholder-red-600' : ''}`}
-          id="homeId"
-          type="text"
-          disabled={isHomeIdDisabled}
-          placeholder="HomeID"
-          {...register('homeId', {
-            onChange(e) {
-              setHomeNameDisabled(!!e.target.value)
-            }
-          })} />
-        {errors.homeId && <div className='text-red-600'>{errors.homeId?.message}</div>}
+        <div className="w-full flex flex-col items-center">
+          <input
+            className={`${signUpInputClass} ${isHomeIdDisabled ? 'bg-opacity-50' : ''} ${errors.homeId ? 'placeholder-red-600' : ''}`}
+            id="homeId"
+            type="text"
+            disabled={isHomeIdDisabled}
+            placeholder="HomeID"
+            {...register('homeId', {
+              onChange(e) {
+                setHomeNameDisabled(!!e.target.value)
+              }
+            })} />
+          {errors.homeId && <div className='text-red-600 text-center text-sizeSm3 w-full'>{errors.homeId?.message}</div>}
+        </div>
       </div>
 
       <div className="w-full flex justify-center mt-4">

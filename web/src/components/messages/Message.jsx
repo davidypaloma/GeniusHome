@@ -1,6 +1,6 @@
 import React from 'react'
-import orangeMessage from '@/assets/message_orange.png'
-import redMessage from '@/assets/message_red.png'
+import orangeMessage from '@/assets/message_1.svg'
+import redMessage from '@/assets/message_2.svg'
 
 
 function Message({ text, isEven }) {
@@ -13,7 +13,7 @@ function Message({ text, isEven }) {
       </div>
 
       <article className="w-48 relative h-32">
-        <img src={isEven ? orangeMessage : redMessage} className="h-full" />
+        <img src={isEven ? orangeMessage : redMessage} className="h-full -mt-6" />
         <p className={`absolute top-0 py-2 text-sizeSm3 ${isEven ? "text-lightOrange pr-4 pl-3" : "text-lightRed pl-4 pr-3"}`}>{text}</p>
       </article>
 
