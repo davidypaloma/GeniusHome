@@ -21,6 +21,7 @@ function AuthStore({ children }) {
     }
   }, [])
 
+
   return (
     <AuthContext.Provider value={{ user, onUserChange: handleUserChange }}>
       {children}

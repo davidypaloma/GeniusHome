@@ -33,9 +33,19 @@ function HomePage() {
   }, [])
 
   function handleTaskDelete(id) {
-    // setCleaningTasks(cleaningTasks.filter((task) => task.id !== id))
     cleaningTaskService.deleteTask(id)
       .then(() => setCleaningTasks((prev) => prev.filter((cleaningTask) => cleaningTask.id !== id)))
+  }
+  function handleDeleteProduct(id) {
+    shoppingListService.deleteProduct(id)
+      .then(() => setShoppingList((prev) => prev.filter((product) => product.id !== id)))
+  }
+
+  function showDay() {
+    return (format(new Date(), 'dd'))
+  }
+  function showMonth() {
+    return (format(new Date(), 'MMMM'))
   }
 
   return (
@@ -47,8 +57,8 @@ function HomePage() {
           <LargeWidget title="Shopping list" date={lastShoppingUpdate}>
             <div className="mt-4">
               {shoppingList.map((product) => (
-                <div key={product.id}>
-                  <div className="flex mt-2">
+                <div key={product.id} onClick={() => handleDeleteProduct(product.id)}>
+                  <div className="cursor-default flex mt-2">
                     <img
                       src={greenArrow}
                       alt="Arrow icon"
@@ -84,7 +94,10 @@ function HomePage() {
             </SmallWidget>
 
             <SmallWidget title="Calendar">
-              {/* children */}
+              <div className="flex flex-col items-center mt-4">
+                <div className="text-9xl text-darkBlue ">{showDay()}</div>
+                <p>{showMonth()}</p>
+              </div>
             </SmallWidget>
 
           </div>

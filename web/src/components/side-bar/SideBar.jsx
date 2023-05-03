@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const sideBarClassName = 'text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 rounded-lg hover:bg-lightRed hover:text-primaryWhite'
 
-const renderSideBarClassName = ({ isActive }) => isActive ? sideBarClassName : `${sideBarClassName} text-opacity-40`
+// const renderSideBarClassName = ({ isActive }) => isActive ? sideBarClassName : `${sideBarClassName} text-opacity-40`
 
 
 function SideBar() {
@@ -36,16 +36,16 @@ function SideBar() {
 
       <nav className="w-full h-4/6 flex flex-col justify-center pl-24">
         <div className="flex flex-col">
-          <span className="text-darkBlue font-bold hover:cursor-default">Organisation</span>
-          <NavLink to="/shopping-list" className={renderSideBarClassName}>Shopping list</NavLink>
-          <NavLink to="/task-list" className={renderSideBarClassName}>Cleaning tasks</NavLink>
+          <span className="text-darkBlue font-bold hover:cursor-default">Organization</span>
+          <NavLink to="/shopping-list" className={sideBarClassName}>Shopping list</NavLink>
+          <NavLink to="/task-list" className={sideBarClassName}>Cleaning tasks</NavLink>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Calendar</span>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Contacts</span>
         </div>
 
         <div className="flex flex-col">
           <span className="text-darkBlue font-bold pt-6 hover:cursor-default">Account management</span>
-          <NavLink to="/#" className={renderSideBarClassName}>Profile</NavLink>
+          <NavLink to="/#" className={sideBarClassName}>Profile</NavLink>
           <button onClick={handleLogout} className={`text-left ${sideBarClassName}`}>Log out</button>
         </div>
       </nav>

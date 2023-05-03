@@ -35,5 +35,3 @@ module.exports.loadSessionUser = (req, res, next) => {
     next()
   }
 }
-
-//TODO archivo config del CORS

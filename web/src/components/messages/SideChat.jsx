@@ -25,7 +25,7 @@ function SideChat() {
         <h2 className="text-gray-200 text-center">Today</h2>
         <div className="flex flex-col overflow-y-auto max-h-96 scrollbar-thin scrollbar-thumb-lightGreen mt-2">
           {messages.map((message, idx) => (
-            <Message key={message.id} text={message.text} isEven={!(idx % 2)} />
+            <Message key={message.id} text={message.text} isEven={!(idx % 2)} owner={message.owner?.userAlias} />
           ))}
         </div>
       </div>

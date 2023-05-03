@@ -4,7 +4,7 @@ import { useState } from "react"
 import SignupForm from "@/components/auth/auth-forms/SignupForm";
 
 
-function LogInPage() {
+function LoginPage() {
   const [showLogin, setShowLogin] = useState(true);
   const [newUserEmail, setNewUserEmail] = useState('')
 
@@ -44,4 +44,4 @@ function LogInPage() {
   )
 }
 
-export default LogInPage
+export default LoginPage

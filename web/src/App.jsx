@@ -1,10 +1,10 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-// import LoginPage from './pages/LoginPage'
 import ShoppingListPage from './pages/ShoppingListPage'
 import TaskListPage from './pages/TaskListPage'
-import LogInPage from './pages/LogInPage'
+import LoginPage from './pages/LoginPage'
 import AuthStore from './contexts/AuthStore'
+import PrivateRoute from './guards/PrivateRoute.jsx'
 
 
 
@@ -17,7 +17,7 @@ function App() {
         <div className="h-screen bg-lightGreen font-[Comfortaa]">
           <Routes>
 
-            <Route path="/login" element={<LogInPage />} />
+            <Route path="/login" element={<LoginPage />} />
 
             <Route path="/" element={<Navigate to="/login" />} />
 

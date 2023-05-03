@@ -1,14 +1,18 @@
 import ShoppingItemCard from "./ShoppingItemCard"
+import { imageTypeMap } from "../../utils/constants"
 
-function ShoppingList({ shoppingList }) {
+
+function ShoppingList({ shoppingList, date }) {
   return (
     <>
       <div className="h-full py-4 px-20">
         <div className="bg-primaryWhite w-full h-full rounded-[2rem] py-4 px-8">
           <div className="w-full h-[22rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-darkBlue">
-            <p className="opacity-40 italic text-end mb-4 mr-4">Last update: 19 / 04 /2023</p>
+            <p className="opacity-40 italic text-end mb-4 mr-4">Last update: {date}</p>
             <div className="grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 md:grid-1 md:gap-6">
-              <ShoppingItemCard shoppingList={shoppingList} />
+              {shoppingList.map((product) => (
+                <ShoppingItemCard key={product.id} name={product.name} location={product.location} quantity={product.quantity} type={product.type} img={imageTypeMap[product.type]} />
+              ))}
             </div>
           </div>
         </div>
