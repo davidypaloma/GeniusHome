@@ -16,3 +16,5 @@ export const imageTypeMap = {
   Vegetables: vegetablesProductGroup,
   Any: anyProductGroup
 }
+
+export const API_KEY = '27aad86a42msha7ee635e6706dccp1bcab6jsn97a65a507048';

@@ -7,6 +7,7 @@ import shoppingListService from '@/services/shopping-list'
 import { format } from "date-fns";
 import greenArrow from '@/assets/green_arrow.svg'
 import pen from '@/assets/pen.svg'
+import Weather from "../components/widgets/weather";
 
 function HomePage() {
   const [cleaningTasks, setCleaningTasks] = useState([])
@@ -91,6 +92,7 @@ function HomePage() {
           <div className="py-4 px-20 grid grid-cols-2 gap-40">
             <SmallWidget title="Weather">
               {/* children */}
+              <Weather />
             </SmallWidget>
 
             <SmallWidget title="Calendar">
