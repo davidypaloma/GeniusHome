@@ -13,7 +13,7 @@ function Message({ text, owner, isEven }) {
       </div>
 
       <article className="w-48 relative h-32">
-        <img src={isEven ? yellowMessage : redMessage} className="h-full" />
+        <img src={isEven ? yellowMessage : redMessage} className="h-full -mt-6" />
         <p className={`absolute top-0 py-2 text-sizeSm3 ${isEven ? "text-lightYellow pr-4 pl-3" : "text-lightRed pl-4 pr-3"}`}>{text}</p>
       </article>
 

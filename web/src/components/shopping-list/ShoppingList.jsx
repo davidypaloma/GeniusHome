@@ -2,7 +2,9 @@ import ShoppingItemCard from "./ShoppingItemCard"
 import { imageTypeMap } from "../../utils/constants"
 
 
-function ShoppingList({ shoppingList, date }) {
+function ShoppingList({ shoppingList, date, handleProductDelete }) {
+
+
   return (
     <>
       <div className="h-full py-4 px-20">
@@ -11,7 +13,7 @@ function ShoppingList({ shoppingList, date }) {
             <p className="opacity-40 italic text-end mb-4 mr-4">Last update: {date}</p>
             <div className="grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 md:grid-1 md:gap-6">
               {shoppingList.map((product) => (
-                <ShoppingItemCard key={product.id} name={product.name} location={product.location} quantity={product.quantity} type={product.type} img={imageTypeMap[product.type]} />
+                <ShoppingItemCard key={product.id} name={product.name} location={product.location} id={product.id} quantity={product.quantity} type={product.type} img={imageTypeMap[product.type]} handleProductDelete={handleProductDelete} />
               ))}
             </div>
           </div>

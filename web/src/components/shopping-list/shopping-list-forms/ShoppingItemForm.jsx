@@ -117,7 +117,7 @@ export default function ShoppingItemForm({ onNewProduct }) {
             </div>
           </div>
 
-          <button type="submit" className="text-white bg-lightRed hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-20 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Submit</button>
+          <button type="submit" className="text-white bg-lightRed hover:bg-red-400 focus:outline-none focus:ring-red-20 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Add new product</button>
         </form>
 
       </div>
@@ -126,7 +126,7 @@ export default function ShoppingItemForm({ onNewProduct }) {
         <div className="max-h-40 w-3/4 overflow-hidden rounded-xl">
           <img
             src={typeImg}
-            alt=""
+            alt="Product group image"
             className="object-cover h-40 w-80 hover:scale-125 transition-all ease-in-out duration-500"
           />
         </div>

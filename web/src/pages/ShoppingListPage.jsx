@@ -23,11 +23,16 @@ function ShoppingListPage() {
     setShoppingList((prev) => [createdProduct, ...prev])
   }
 
+  function handleProductDelete(id) {
+    shoppingListService.deleteProduct(id)
+      .then(() => setShoppingList((prev) => prev.filter((product) => product.id !== id)))
+  }
+
   return (
     <PageLayout title="Shopping list">
 
       <div className="h-full grid grid-rows-[.8fr,.4fr]">
-        <ShoppingList shoppingList={shoppingList} date={lastUpdate} />
+        <ShoppingList shoppingList={shoppingList} date={lastUpdate} handleProductDelete={handleProductDelete} />
 
         <div className="px-20 h-48 py-1">
           <div className="bg-primaryWhite max-h-[180px] overflow-hidden rounded-[2rem] py-1 px-8">
