@@ -13,7 +13,7 @@ module.exports.create = (req, res, next) => {
 module.exports.list = (req, res, next) => {
   Message.find({ home: req.user.home })
     .populate('owner home')
-    .sort({ createdAt: 'asc' })
+    .sort({ createdAt: 'desc' })
     .then((messages) => res.json(messages))
     .catch(next);
 };

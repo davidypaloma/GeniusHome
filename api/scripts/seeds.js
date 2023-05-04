@@ -1,3 +1,4 @@
+require("dotenv").config();
 require("../config/db.config");
 const Home = require("../models/home.model");
 const User = require("../models/user.model");
@@ -17,76 +18,76 @@ const _users = [
     "userAlias": "lechon",
     "email": "example2@example.com",
     "password": "12345678",
-    "image": "https://picsum.photos/200",
+    "image": "boy",
     "home": null
   }, {
     "userName": "Sergio",
     "userAlias": "kami",
     "email": "example@example.com",
     "password": "12345678",
-    "image": "https://picsum.photos/200",
+    "image": "man",
     "home": null
   }, {
     "userName": "Paloma",
     "userAlias": "vickie",
     "email": "paloma.gladine@gmail.com",
     "password": "12345678",
-    "image": "https://picsum.photos/200",
+    "image": "woman",
     "home": null
   }, {
     "userName": "Intruso1",
     "userAlias": "malignorrrrr",
     "email": "example3@example.com",
     "password": "12345678",
-    "image": "https://picsum.photos/200",
+    "image": "girl",
     "home": null
   }, {
     "userName": "Intruso2",
     "userAlias": "malignorrrrr",
     "email": "example4@example.com",
     "password": "12345678",
-    "image": "https://picsum.photos/200",
+    "image": "girl",
     "home": null
   }, {
     "userName": "David",
     "userAlias": "deivid",
     "email": "deivid@example.com",
     "password": "12345678",
-    "image": "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
+    "image": "man"
   }, {
     "userName": "Bemol",
     "userAlias": "pesadito",
     "email": "bemol@example.com",
     "password": "12345678",
-    "image": "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
+    "image": "boy"
   }]
 
 const _products = [{
   "name": "aguacate",
-  "location": "supermercado",
+  "location": "Mercadona",
   "image": "https://picsum.photos/200",
-  "type": "fruta",
+  "type": "Fruit",
   "quantity": "2kg",
   "home": null
 }, {
   "name": "naranjas",
-  "location": "supermercado",
+  "location": "Mercadona",
   "image": "https://picsum.photos/200",
-  "type": "fruta",
+  "type": "Fruit",
   "quantity": "2kg",
   "home": null
 }, {
   "name": "pollo",
-  "location": "supermercado",
+  "location": "Mercadona",
   "image": "https://picsum.photos/200",
-  "type": "carne",
+  "type": "Meat",
   "quantity": "2kg",
   "home": null
 }, {
   "name": "salmon",
-  "location": "supermercado",
+  "location": "Mercadona",
   "image": "https://picsum.photos/200",
-  "type": "pescado",
+  "type": "Fish",
   "quantity": "2kg",
   "home": null
 }]
@@ -146,6 +147,8 @@ const _messages = [{
 }]
 
 Product.deleteMany()
+  .then(() => Message.deleteMany())
+  .then(() => CleaningTask.deleteMany())
   .then(() => User.deleteMany())
   .then(() => Home.deleteMany())
   .then(() => Home.create(_homes))

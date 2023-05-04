@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '@/contexts/AuthStore'
 import { NavLink } from 'react-router-dom'
+import { imageAvatar } from '../../utils/constants';
+
 
 function Header({ title }) {
   const { user } = useContext(AuthContext)
@@ -16,7 +18,9 @@ function Header({ title }) {
           <h4 className="text-sizeMd1">Alias: {user?.userAlias}</h4>
         </div>
         <div className="flex items-center px-6">
-          <div className="bg-darkGreen h-16 w-16 rounded-full"></div>
+          <div className="bg-darkGreen h-16 w-16 rounded-full">
+            <img src={imageAvatar[user?.image]} alt={user?.image} />
+          </div>
         </div>
       </div>
     </div>

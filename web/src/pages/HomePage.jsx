@@ -130,7 +130,6 @@ function HomePage() {
                         className="w-4 h-auto rounded-full mr-2"
                       />
                       <p>{cleaningTask.name} | <span className="italic opacity-50"> {cleaningTask.assignedUser.userName}</span></p>
-                      {console.log(cleaningTask)}
                     </div>
                   </div>
                 ))}

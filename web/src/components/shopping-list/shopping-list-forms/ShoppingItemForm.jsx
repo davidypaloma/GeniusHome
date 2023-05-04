@@ -10,7 +10,6 @@ export default function ShoppingItemForm({ onNewProduct }) {
 
   const onShoppingItemSubmit = (product) => {
     setServerError();
-    console.log(product);
     shoppingListService.addProduct(product)
       .then((createdProduct) => {
         onNewProduct(createdProduct)

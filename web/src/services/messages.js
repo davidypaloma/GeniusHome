@@ -4,9 +4,12 @@ const list = () => http.get('/messages');
 
 const create = (message) => http.post('/messages', message)
 
-// TODO: const create const delete y const update
+const deleteMessage = (id) => http.delete(`/messages/${id}`)
+
+// TODO:  const update
 
 export default {
   list,
-  create
+  create,
+  deleteMessage
 }

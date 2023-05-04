@@ -5,12 +5,11 @@ import { imageAvatar } from '../../../utils/constants'
 
 
 function SignupForm({ onSignupSuccess }) {
-  const { register, handleSubmit, reset, setError, formState: { errors } } = useForm({ mode: 'onBlur' })
+  const { register, setValue, watch, handleSubmit, reset, setError, formState: { errors } } = useForm({ mode: 'onBlur', defaultValues: {image: 'girl'} })
   const [serverError, setServerError] = useState();
 
   const [isHomeIdDisabled, setHomeIdDisabled] = useState(false)
   const [isHomeNameDisabled, setHomeNameDisabled] = useState(false)
-
   const onSignupSubmit = (user) => {
     setServerError();
     userService.create(user)
@@ -132,18 +131,19 @@ function SignupForm({ onSignupSuccess }) {
 
       <div className="flex justify-center mt-2">
         {/* AVATARS */}
+        <input type="hidden" {...register('image')} />
         <div className="w-full flex flex-col items-center">
           <div className="w-[93%] h-full flex justify-between items-center px-2 rounded-lg">
-            <div className="cursor-pointer rounded-full w-12 h-12 animate-bounce">
+            <div className={`cursor-pointer rounded-full w-12 h-12 ${watch('image') === 'man' ? 'animate-bounce' : ''}`} onClick={() => setValue('image', 'man')}>
               <img src={imageAvatar['man']} alt="man Avatar" />
             </div>
-            <div className="cursor-pointer rounded-full w-12 h-12">
+            <div className={`cursor-pointer rounded-full w-12 h-12 ${watch('image') === 'woman' ? 'animate-bounce' : ''}`} onClick={() => setValue('image', 'woman')}>
               <img src={imageAvatar['woman']} alt="woman Avatar" />
             </div>
-            <div className="cursor-pointer rounded-full w-12 h-12">
+            <div className={`cursor-pointer rounded-full w-12 h-12 ${watch('image') === 'boy' ? 'animate-bounce' : ''}`} onClick={() => setValue('image', 'boy')}>
               <img src={imageAvatar['boy']} alt="boy Avatar" />
             </div>
-            <div className="cursor-pointer rounded-full w-12 h-12">
+            <div className={`cursor-pointer rounded-full w-12 h-12 ${watch('image') === 'girl' ? 'animate-bounce' : ''}`} onClick={() => setValue('image', 'girl')}>
               <img src={imageAvatar['girl']} alt="Man Avatar" />
             </div>
           </div>
