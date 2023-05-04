@@ -38,7 +38,7 @@ function SideBar() {
         <div className="flex flex-col">
           <span className="text-darkBlue font-bold hover:cursor-default">Organization</span>
           <NavLink to="/shopping-list" className={sideBarClassName}>Shopping list</NavLink>
-          <NavLink to="/task-list" className={sideBarClassName}>Cleaning tasks</NavLink>
+          <NavLink to="/task-list" className={sideBarClassName}>Tasks list</NavLink>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Calendar</span>
           <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Contacts</span>
         </div>

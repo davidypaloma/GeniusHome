@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import LargeWidget from "@/components/widgets/LargeWidget";
 import SmallWidget from "@/components/widgets/SmallWidget";
@@ -14,6 +14,10 @@ function HomePage() {
   const [shoppingList, setShoppingList] = useState([])
   const [lastCleaningUpdate, setLastCleaningUpdate] = useState("-")
   const [lastShoppingUpdate, setLastShoppingUpdate] = useState("-")
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const tooltipTimeoutRef = useRef(null);
+
 
   useEffect(() => {
     cleaningTaskService.list()
@@ -33,6 +37,17 @@ function HomePage() {
       .catch(console.error)
   }, [])
 
+  const handleTooltipDisplay = (isShowing) => {
+    if (isShowing) {
+      tooltipTimeoutRef.current = setTimeout(() => {
+        setShowTooltip(false);
+      }, 5000);
+    } else {
+      clearTimeout(tooltipTimeoutRef.current);
+    }
+    setShowTooltip(isShowing);
+  };
+
   function handleTaskDelete(id) {
     cleaningTaskService.deleteTask(id)
       .then(() => setCleaningTasks((prev) => prev.filter((cleaningTask) => cleaningTask.id !== id)))
@@ -49,64 +64,97 @@ function HomePage() {
     return (format(new Date(), 'MMMM'))
   }
 
+  function Tooltip({ x, y, children }) {
+    return (
+      <div
+        className="absolute p-2 bg-primaryWhite rounded-lg shadow-md border-[1.5px] border-darkGreen"
+        style={{ top: y + 10, left: x + 10 }}
+      >
+        {children}
+      </div>
+    );
+  }
+
+  const handleTitleMouseEnter = (e) => {
+    handleTooltipDisplay(true);
+    setTooltipPosition({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleTitleMouseMove = (e) => {
+    setTooltipPosition({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleTitleMouseLeave = () => {
+    handleTooltipDisplay(false);
+  };
+
   return (
     <>
       <PageLayout title="Home">
 
-        <div className="grid grid-rows-[repeat(3,1fr)]">
+        <div className="grid grid-rows-[repeat(3,1fr)] h-[620px]">
 
-          <LargeWidget title="Shopping list" date={lastShoppingUpdate}>
-            <div className="mt-4">
-              {shoppingList.map((product) => (
-                <div key={product.id} onClick={() => handleDeleteProduct(product.id)}>
-                  <div className="cursor-default flex mt-2">
-                    <img
-                      src={greenArrow}
-                      alt="Arrow icon"
-                      className="w-4 h-auto rounded-full mr-2"
-                    />
-                    {product.name}
+          <section className="h-56">
+            <LargeWidget title="Shopping list" date={lastShoppingUpdate}>
+              {showTooltip && (
+                <Tooltip x={tooltipPosition.x} y={tooltipPosition.y}>
+                  <p className="italic font-extralight text-darkGreen">Haz click sobre un elemento para eliminarlo</p>
+                </Tooltip>
+              )}
+              <div className="grid grid-cols-3 h-36 max-h-36 overflow-y-scroll scrollbar-thin scrollbar-thumb-darkGreen" onMouseEnter={handleTitleMouseEnter} onMouseMove={handleTitleMouseMove} onMouseLeave={handleTitleMouseLeave}>
+                {shoppingList.map((product) => (
+                  <div key={product.id} onClick={() => handleDeleteProduct(product.id)}>
+                    <div className="cursor-default flex mt-2">
+                      <img
+                        src={greenArrow}
+                        alt="Arrow icon"
+                        className="w-4 h-auto rounded-full mr-2"
+                      />
+                      {product.name}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </LargeWidget>
+                ))}
+              </div>
+            </LargeWidget>
+          </section>
 
-          <LargeWidget title="Cleaning tasks" date={lastCleaningUpdate}>
-            <div className="mt-4">
-              {cleaningTasks.map((cleaningTask) => (
-                <div key={cleaningTask.id} onClick={() => handleTaskDelete(cleaningTask.id)}>
-                  <div className="cursor-default flex mt-2">
-                    <img
-                      src={pen}
-                      alt="Pen icon"
-                      className="w-4 h-auto rounded-full mr-2"
-                    />
-                    {cleaningTask.name}
+          <section className="h-56 grid items-center">
+            <LargeWidget title="Tasks List" date={lastCleaningUpdate}>
+              <div className="h-36 max-h-36 overflow-y-scrollscrollbar-thin scrollbar-thumb-darkGreen" onMouseEnter={handleTitleMouseEnter} onMouseMove={handleTitleMouseMove} onMouseLeave={handleTitleMouseLeave}>
+                {cleaningTasks.map((cleaningTask) => (
+                  <div key={cleaningTask.id} onClick={() => handleTaskDelete(cleaningTask.id)}>
+                    <div className="cursor-default flex mt-2">
+                      <img
+                        src={pen}
+                        alt="Pen icon"
+                        className="w-4 h-auto rounded-full mr-2"
+                      />
+                      <p>{cleaningTask.name} | <span className="italic opacity-50"> {cleaningTask.assignedUser.name}</span></p>
+                      {console.log(cleaningTask)}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </LargeWidget>
+                ))}
+              </div>
+            </LargeWidget>
+          </section>
 
-          <div className="py-4 px-20 grid grid-cols-2 gap-40">
+          <section className="px-20 grid grid-cols-2 gap-40 items-center">
             <SmallWidget title="Weather">
-              {/* children */}
               <Weather />
             </SmallWidget>
 
             <SmallWidget title="Calendar">
               <div className="flex flex-col items-center mt-4">
-                <div className="text-9xl text-darkBlue ">{showDay()}</div>
+                <div className="text-6xl text-darkBlue ">{showDay()}</div>
                 <p>{showMonth()}</p>
               </div>
             </SmallWidget>
 
-          </div>
+          </section>
 
         </div>
 
-      </PageLayout>
+      </PageLayout >
     </>
   );
 }

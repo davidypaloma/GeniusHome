@@ -9,7 +9,7 @@ function ShoppingList({ shoppingList, date, handleProductDelete }) {
     <>
       <div className="h-full py-4 px-20">
         <div className="bg-primaryWhite w-full h-full rounded-[2rem] py-4 px-8">
-          <div className="w-full h-[22rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-darkBlue">
+          <div className="w-full h-[22rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-darkGreen">
             <p className="opacity-40 italic text-end mb-4 mr-4">Last update: {date}</p>
             <div className="grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 md:grid-1 md:gap-6">
               {shoppingList.map((product) => (
