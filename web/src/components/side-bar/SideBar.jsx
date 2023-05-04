@@ -39,8 +39,22 @@ function SideBar() {
           <span className="text-darkBlue font-bold hover:cursor-default">Organization</span>
           <NavLink to="/shopping-list" className={sideBarClassName}>Shopping list</NavLink>
           <NavLink to="/task-list" className={sideBarClassName}>Tasks list</NavLink>
-          <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Calendar</span>
-          <span className="text-darkGreen font-bold w-2/3 mt-4 py-1 pl-4 text-opacity-25 hover:cursor-default">Contacts</span>
+          <div className='w-2/3 mt-4 py-1 pl-4 hover:cursor-default flex'>
+            <p className="text-slate-500 text-opacity-25 font-bold">Calendar</p>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/6675/6675275.png"
+              alt="coming soon icon"
+              className='h-5 aspect-square opacity-30 mx-4'
+            />
+          </div>
+          <div className='w-2/3 mt-4 py-1 pl-4 hover:cursor-default flex'>
+            <p className="text-slate-500 text-opacity-25 font-bold">Contacts</p>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/6675/6675275.png"
+              alt="coming soon icon"
+              className='h-5 aspect-square opacity-30 mx-4'
+            />
+          </div>
         </div>
 
         <div className="flex flex-col">
