@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import userService from '@/services/users'
+import { imageAvatar } from '../../../utils/constants'
+
 
 function SignupForm({ onSignupSuccess }) {
   const { register, handleSubmit, reset, setError, formState: { errors } } = useForm({ mode: 'onBlur' })
@@ -128,14 +130,34 @@ function SignupForm({ onSignupSuccess }) {
         </div>
       </div>
 
-      <div className="w-full flex justify-center mt-4">
-        <button
-          type='submit'
-          className="bg-lightRed rounded-lg text-primaryWhite w-1/5 h-14"
-        >Continue
-        </button>
-      </div>
+      <div className="flex justify-center mt-2">
+        {/* AVATARS */}
+        <div className="w-full flex flex-col items-center">
+          <div className="w-[93%] h-full flex justify-between items-center px-2 rounded-lg">
+            <div className="cursor-pointer rounded-full w-12 h-12 animate-bounce">
+              <img src={imageAvatar['man']} alt="man Avatar" />
+            </div>
+            <div className="cursor-pointer rounded-full w-12 h-12">
+              <img src={imageAvatar['woman']} alt="woman Avatar" />
+            </div>
+            <div className="cursor-pointer rounded-full w-12 h-12">
+              <img src={imageAvatar['boy']} alt="boy Avatar" />
+            </div>
+            <div className="cursor-pointer rounded-full w-12 h-12">
+              <img src={imageAvatar['girl']} alt="Man Avatar" />
+            </div>
+          </div>
+        </div>
 
+        {/* SUBMIT BUTTON */}
+        <div className="w-full flex flex-col items-center">
+          <button
+            type='submit'
+            className="bg-lightRed rounded-lg text-primaryWhite h-14 w-[93%]"
+          >Continue
+          </button>
+        </div>
+      </div>
     </form>
   )
 }
