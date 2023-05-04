@@ -9,15 +9,28 @@ import { format } from "date-fns";
 function ShoppingListPage() {
   const [shoppingList, setShoppingList] = useState([])
   const [lastUpdate, setLastUpdate] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     shoppingListService.list()
       .then((shoppingListResponse) => {
         setShoppingList(shoppingListResponse)
         setLastUpdate(format(new Date(shoppingListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
       })
       .catch(console.error)
+      .finally(() => setIsLoading(false))
   }, [])
+
+  if (isLoading) {
+    return (
+      <div class="flex justify-center">
+        <span class="circle animate-loader"></span>
+        <span class="circle animate-loader animation-delay-200"></span>
+        <span class="circle animate-loader animation-delay-400"></span>
+      </div>
+    )
+  }
 
   const handleNewProduct = (createdProduct) => {
     setShoppingList((prev) => [createdProduct, ...prev])
