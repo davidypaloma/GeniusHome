@@ -7,6 +7,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'sans': ['Fredericka the Great', 'sans-serif']
+    },
     extend: {
       colors: {
         'darkGreen': '#38816F',
