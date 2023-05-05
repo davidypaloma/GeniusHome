@@ -16,7 +16,9 @@ function ShoppingListPage() {
     shoppingListService.list()
       .then((shoppingListResponse) => {
         setShoppingList(shoppingListResponse)
-        setLastUpdate(format(new Date(shoppingListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        if (shoppingListResponse.length) {
+          setLastUpdate(format(new Date(shoppingListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        }
       })
       .catch(console.error)
       .finally(() => setIsLoading(false))

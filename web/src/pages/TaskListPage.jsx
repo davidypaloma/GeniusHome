@@ -14,7 +14,9 @@ function TaskListPage() {
     taskListService.list()
       .then((taskListResponse) => {
         setTaskList(taskListResponse)
-        setLastUpdate(format(new Date(taskListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        if (taskListResponse.length) {
+          setLastUpdate(format(new Date(taskListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        }
       })
       .catch(console.error)
   }, [])

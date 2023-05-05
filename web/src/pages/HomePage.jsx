@@ -23,7 +23,9 @@ function HomePage() {
     cleaningTaskService.list()
       .then((cleaningTasksResponse) => {
         setCleaningTasks(cleaningTasksResponse)
-        setLastCleaningUpdate(format(new Date(cleaningTasksResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        if (cleaningTasksResponse.length) {
+          setLastCleaningUpdate(format(new Date(cleaningTasksResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        }
       })
       .catch(console.error)
   }, [])
@@ -32,7 +34,9 @@ function HomePage() {
     shoppingListService.list()
       .then((shoppingListResponse) => {
         setShoppingList(shoppingListResponse)
-        setLastShoppingUpdate(format(new Date(shoppingListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        if (shoppingListResponse.length) {
+          setLastShoppingUpdate(format(new Date(shoppingListResponse?.[0]?.updatedAt), 'dd/MM/yyyy'))
+        }
       })
       .catch(console.error)
   }, [])
