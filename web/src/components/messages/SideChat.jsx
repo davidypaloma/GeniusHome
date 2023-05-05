@@ -12,16 +12,21 @@ function SideChat() {
   useEffect(() => {
     messagesService.list()
       .then((messagesResponse) => {
-        setMessages(messagesResponse);
+        setMessages(messagesResponse.toReversed());
       })
       .catch(console.error)
   }, [])
 
 
 
+  // const handleNewMessage = (createdMessage) => {
+  //   setMessages((prev) => [createdMessage, ...prev])
+  //   containerRef.current?.scrollTo(0, 0);
+  // }
+
   const handleNewMessage = (createdMessage) => {
-    setMessages((prev) => [createdMessage, ...prev])
-    containerRef.current?.scrollTo(0, 0);
+    setMessages((prev) => prev.concat(createdMessage))
+    containerRef.current?.scrollTo(100, 100);
   }
 
   function handleDeleteMessage(id) {
