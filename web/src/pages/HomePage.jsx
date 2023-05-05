@@ -124,7 +124,7 @@ function HomePage() {
 
           <section className="h-56 grid items-center">
             <LargeWidget title="Tasks List" date={lastCleaningUpdate}>
-              <div className="h-36 max-h-36 overflow-y-scrollscrollbar-thin scrollbar-thumb-darkGreen" onMouseEnter={handleTitleMouseEnter} onMouseMove={handleTitleMouseMove} onMouseLeave={handleTitleMouseLeave}>
+              <div className="h-36 max-h-36 overflow-y-scroll scrollbar-thin scrollbar-thumb-darkGreen" onMouseEnter={handleTitleMouseEnter} onMouseMove={handleTitleMouseMove} onMouseLeave={handleTitleMouseLeave}>
                 {cleaningTasks.map((cleaningTask) => (
                   <div key={cleaningTask.id} onClick={() => handleTaskDelete(cleaningTask.id)}>
                     <div className="cursor-default flex mt-2">
