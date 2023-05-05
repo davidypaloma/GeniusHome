@@ -2,8 +2,11 @@ import http from "./base-api";
 
 const create = (home) => http.post('/homes', home);
 
-// TODO?: const homeProfile, const invite, const delete, const update
+const detail = () => http.get('/home-profile');
+
+// TODO?: const invite, const delete, const update
 
 export default {
   create,
+  detail
 }

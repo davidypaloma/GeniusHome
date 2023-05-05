@@ -6,7 +6,6 @@ module.exports.exists = (req, res, next) => {
   const cleaningTaskId = req.params.id
   CleaningTask.findOne({ _id: cleaningTaskId, home: req.user.home })
     .then((cleaningTask) => {
-      console.log(cleaningTaskId, cleaningTask)
       if (cleaningTask) {
         req.cleaningTask = cleaningTask;
         next();

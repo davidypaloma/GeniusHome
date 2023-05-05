@@ -69,11 +69,6 @@ export default function ShoppingItemForm({ onNewProduct }) {
                 id="type"
                 className="bg-primaryWhite border-2 border-darkGreen text-darkBlue text-sm rounded-lg focus:ring-lightRed focus:border-lighring-lightRed block w-full p-2.5"
                 {...register('type', {
-                  onChange: (event) => {
-                    console.log(event, event.target, event.target?.value)
-                    setTypeImg(imageTypeMap[event.target.value])
-                  }
-
                 })}
               >
                 <option>Meat</option>

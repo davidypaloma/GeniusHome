@@ -5,15 +5,16 @@ import { format } from "date-fns";
 import { imageAvatar } from '../../utils/constants';
 
 
-function Message({ text, owner, isEven, time, image }) {
+function Message({ text, owner, isEven, time, image, onMessageClick }) {
 
   function showTime() {
     return (format(new Date(time), 'dd/MMM HH:mm'))
   }
 
 
+
   return (
-    <div className={`flex items-stretch mt-2 ${isEven ? "self-start flex-row-reverse" : "self-end flex-row"}`}>
+    <div className={`flex items-stretch mt-2 ${isEven ? "self-start flex-row-reverse" : "self-end flex-row"}`} onClick={onMessageClick}>
 
       <div className='flex-col px-2 relative'>
         <img></img>

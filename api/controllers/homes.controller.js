@@ -8,8 +8,11 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.detail = (req, res, next) => {
-  req.home.populate('users')
-    .then((home) => res.json(home))
+  req.user.populate('home')
+    .then((user) => {
+      return user.home.populate('users')
+        .then((home) => res.json(home))
+    })
     .catch(next);
 }
 

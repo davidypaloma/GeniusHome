@@ -1,14 +1,23 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '@/contexts/AuthStore'
-import { imageAvatar } from '../../utils/constants';
+import { imageAvatar } from '@/utils/constants'
+import homeService from '@/services/home';
 
 function Header({ title }) {
   const { user } = useContext(AuthContext)
   const [showModal, setShowModal] = useState(false);
+  const [homeUsers, setHomeUsers] = useState([])
 
   const handleAvatarClick = () => {
     setShowModal(true);
   };
+
+  useEffect(() => {
+    homeService.detail()
+      .then((homeResult) => {
+        setHomeUsers(homeResult.users)
+      })
+  }, [])
 
   return (
     <div className="flex justify-between">
@@ -31,8 +40,6 @@ function Header({ title }) {
           </div>
         </div>
       </div>
-
-      {console.log(user)}
 
       {showModal && (
         <div className="fixed top-0 bottom-0 left-0 right-0 bg-opacity-50 bg-black backdrop-filter backdrop-blur-sm z-10 flex justify-center items-center">
@@ -62,9 +69,9 @@ function Header({ title }) {
             </section>
 
             <section className='w-full h-12 flex justify-center'>
-              <div className="bg-darkBlue border-2 border-primaryWhite h-12 aspect-square rounded-full"></div>
-              <div className="bg-darkBlue border-2 border-primaryWhite h-12 aspect-square rounded-full -ml-2"></div>
-              <div className="bg-darkBlue border-2 border-primaryWhite h-12 aspect-square rounded-full -ml-2"></div>
+              {homeUsers.map((user) => (
+                <img key={user.id} src={imageAvatar[user.image]} alt={user.image} className="bg-darkBlue border-2 border-primaryWhite h-12 aspect-square rounded-full -ml-2" />
+              ))}
             </section>
 
             <div className='w-full flex justify-center mt-6'>

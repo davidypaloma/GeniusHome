@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import { imageAvatar } from '@/utils/constants'
 
-function TaskListItemItemCard({ name, id, assignedUser }) {
+function TaskListItemItemCard({ name, assignedUser }) {
 
   const [isTaskDone, setIsTaskDone] = useState(false)
 
-  const handletaskDone = () => {
+  const handleTaskDone = () => {
     setIsTaskDone(!isTaskDone)
   }
 
@@ -17,9 +18,10 @@ function TaskListItemItemCard({ name, id, assignedUser }) {
       />
       <p
         className={`text-white font-sans text-sizeMd2 px-4 cursor-pointer ${isTaskDone ? 'line-through' : ''}`}
-        onClick={handletaskDone}>
-        {name}
+        onClick={handleTaskDone}>
+        {name} | <span className="italic opacity-50"> {assignedUser.userName}</span>
       </p>
+      <img src={imageAvatar[assignedUser.image]} alt={assignedUser.image} className='h-8 w-8 rounded-full' />
     </div>
 
   )

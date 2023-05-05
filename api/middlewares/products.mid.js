@@ -5,7 +5,6 @@ module.exports.exists = (req, res, next) => {
   const productId = req.params.id
   Product.findOne({ _id: productId, home: req.user.home})
     .then((product) => {
-      console.log(productId, product)
       if (product) {
         req.product = product;
         next();

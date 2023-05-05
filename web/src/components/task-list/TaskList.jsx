@@ -12,7 +12,7 @@ function TaskList({ taskList, date }) {
           <div className="w-full h-[22rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-darkGreen">
             <p className="text-primaryWhite opacity-40 italic text-end mb-4 mr-4">Last update: {date}</p>
             {taskList.map((task) => (
-              <TaskListItemCard key={task.id} name={task.name} id={task.id} assignedUser={task.assignedUser.userName} />
+              <TaskListItemCard key={task.id} name={task.name} id={task.id} assignedUser={task.assignedUser} />
             ))}
           </div>
         </div>

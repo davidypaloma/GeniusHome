@@ -5,7 +5,6 @@ module.exports.exists = (req, res, next) => {
   const messageId = req.params.id;
   Message.findOne({ _id: messageId, home: req.user.home })
     .then((message) => {
-      console.log(messageId, message)
       if (message) {
         req.message = message;
         next();

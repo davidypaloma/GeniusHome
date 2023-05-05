@@ -1,15 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import taskListService from '@/services/cleaning-tasks';
-
-const users = [
-  { id: 1, userName: "Mikel" },
-  { id: 2, userName: "Sergio" }
-]
+import homeService from '@/services/home';
 
 export default function TaskListItemForm({ onNewTask }) {
   const { register, handleSubmit, reset, setError, formState: { errors }, getValues } = useForm({ mode: 'onSubmit' })
   const [serverError, setServerError] = useState()
+  const [homeUsers, setHomeUsers] = useState([])
 
   const onTaskListItemSubmit = (task) => {
     setServerError();
@@ -36,6 +33,12 @@ export default function TaskListItemForm({ onNewTask }) {
 
   const taskItemLabelClassName = "peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-darkborder-darkGreen peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
 
+  useEffect(() => {
+    homeService.detail()
+      .then((homeResult) => {
+        setHomeUsers(homeResult.users)
+      })
+  }, [])
 
   return (
     <div className="flex justify-center">
@@ -75,7 +78,7 @@ export default function TaskListItemForm({ onNewTask }) {
               {...register('assignedUser', {
               })}
             >
-              {users.map((user) => (<option value={user.id}>{user.userName}</option>))}
+              {homeUsers.map((user) => (<option key={user.id} value={user.id}>{user.userName}</option>))}
             </select>
           </div>
 
